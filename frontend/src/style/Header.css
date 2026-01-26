@@ -1,0 +1,41 @@
+.app-header {
+  background-color: #fefefe;
+  border-bottom: 1px solid #000000;
+}
+
+.logo-box {
+  width: 36px;
+  height: 36px;
+  background-color: #dd0707;
+  border-radius: 8px;
+  margin-right: 8px;
+}
+
+.app-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+}
+
+.nav-link {
+  color: #e30000;
+  font-size: 14px;
+  margin-right: 0;
+}
+
+.nav-link:hover {
+  color: #000000;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 30px 0 30px;
+}
+
+.btn {
+  color: #036fd4;
+}
+
+.btn:hover {
+  color: rgb(0, 0, 0);
+}

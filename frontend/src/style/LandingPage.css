@@ -1,0 +1,286 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.landing-page {
+  width: 100%;
+}
+
+.hero {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #E0F2FE;
+  color: white;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #1E3A8A;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #111827;
+}
+
+.button-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #DC2626;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #006db6;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #000000;
+  border: 2px solid #040404;
+}
+
+.btn-secondary:hover {
+  background-color: #333;
+  color: white;
+}
+
+.features {
+  padding: 150px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 38px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #1E3A8A;
+}
+
+.features > p {
+  font-size: 18px;
+  margin-bottom: 50px;
+  color: #666;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  border-color: #2563eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 38px;
+  margin-bottom: 15px;
+}
+
+.feature-card h3 {
+  font-size: 20px;
+  color: #16A34A;
+  margin-bottom: 14px;
+  font-weight: bold;
+}
+
+.feature-card p {
+  font-size: 16px;
+  color: #666;
+}
+
+.how-it-works {
+  padding: 120px 20px;
+  background-color: #E0F2FE;
+  text-align: center;
+}
+
+.how-it-works h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.how-it-works > p {
+  font-size: 18px;
+  margin-bottom: 50px;
+  color: #666;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 80px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.step {
+  padding: 30px;
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 auto 20px;
+}
+
+.step h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.step p {
+  font-size: 16px;
+  color: #666;
+}
+
+.tech-stack {
+  padding: 120px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.tech-stack h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.tech-stack > p {
+  font-size: 16px;
+  margin-bottom: 50px;
+  color: #666;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 70px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tech-card {
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.tech-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tech-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #F59E0B;
+}
+
+.tech-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .features h2,
+  .how-it-works h2,
+  .tech-stack h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 15px;
+    min-height: auto;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .features,
+  .how-it-works,
+  .tech-stack {
+    padding: 40px 15px;
+  }
+}
