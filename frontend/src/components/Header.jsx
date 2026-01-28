@@ -1,15 +1,21 @@
 import "../style/Header.css";
-import React from 'react';
+import { Link } from "react-router-dom";
+import React from "react";
 
-function Header() {
+function Header({ isLoggedIn }) {
     return (
         <header className="app-header">
             <nav className="navbar navbar-expand-lg">
                 <div className="container">
-                    <a className="navbar-brand d-flex align-items-center" href="/">
-                        <div className="logo-box"></div>
+
+                    <Link className="navbar-brand d-flex align-items-center" to="/">
+                        <img
+                            src="/helpro-logo.jpg"
+                            alt="Help Pro Logo"
+                            style={{ width: '50px', height: '50px', objectFit: 'contain' }}
+                        />
                         <span className="app-name">Help Pro</span>
-                    </a>
+                    </Link>
 
                     <button
                         className="navbar-toggler"
@@ -21,31 +27,39 @@ function Header() {
                     </button>
 
                     <div className="collapse navbar-collapse" id="navbarMenu">
-                        <ul className="navbar-nav ms-auto align-items-lg-center">
-                            <li className="nav-item">
-                                <a className="nav-link" href="#features">Features</a>
-                            </li>
 
-                            <li className="nav-item">
-                                <a className="nav-link" href="#how">How It Works</a>
-                            </li>
+                        { !isLoggedIn &&
+                            <ul className="navbar-nav mx-auto align-items-lg-center">
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#features">Features</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#how">How It Works</a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href="#tech">Technology</a>
+                                </li>
+                            </ul>}
 
-                            <li className="nav-item">
-                                <a className="nav-link" href="#tech">Technology</a>
-                            </li>
-
-                            <li className="nav-item ms-lg-3 mt-2 mt-lg-0">
-                                <button className="btn">
-                                    Register Now
-                                </button>
-                            </li>
-                            
-                        </ul>
+                        <div className="d-flex ms-auto gap-1">
+                            { !isLoggedIn ? 
+                            (
+                                <>
+                                    <Link className="btn btn-outline-primary" to="/login"> Log in </Link>
+                                    <Link className="btn btn-primary" to="/register"> Register Now </Link>
+                                </>
+                            ) : 
+                            (
+                                <button className="btn btn-primary" style={{ "width": "80px", "height": "34px", "fontSize": "12px", "padding": "0 10px", "textDecoration": "none" }}>Sign Out</button>
+                            )
+                                }
+                        </div>
                     </div>
                 </div>
             </nav>
         </header>
     );
-};
+}
 
 export default Header;
+
