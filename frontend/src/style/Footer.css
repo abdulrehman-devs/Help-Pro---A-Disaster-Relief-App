@@ -2,7 +2,6 @@
     background-color: #1f2937;
     color: #e5e7eb;
     padding: 50px 20px 30px;
-    margin-top: 80px;
     border-top: 1px solid #374151;
 }
 
@@ -130,8 +129,8 @@
 
 @media (max-width: 480px) {
     .footer {
-        padding: 30px 12px 20px;
-        margin-top: 40px;
+        padding: 60px 20px 40px;
+        margin-top: 0px;
     }
 
     .footer-content {
