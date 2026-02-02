@@ -5,7 +5,7 @@ import React from "react";
 function Header({ isLoggedIn }) {
     return (
         <header className="app-header">
-            <nav className="navbar navbar-expand-lg">
+            <nav className="navbar navbar-expand-lg" >
                 <div className="container">
 
                     <Link className="navbar-brand d-flex align-items-center" to="/">
@@ -31,13 +31,13 @@ function Header({ isLoggedIn }) {
                         { !isLoggedIn &&
                             <ul className="navbar-nav mx-auto align-items-lg-center">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#features">Features</a>
+                                    <a className="nav-link" href="#features">FEATURES</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#how">How It Works</a>
+                                    <a className="nav-link" href="#how">HOW IT WORKS</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#tech">Technology</a>
+                                    <a className="nav-link" href="#tech">TECHNOLOGY</a>
                                 </li>
                             </ul>}
 
@@ -45,12 +45,12 @@ function Header({ isLoggedIn }) {
                             { !isLoggedIn ? 
                             (
                                 <>
-                                    <Link className="btn btn-outline-primary" to="/login"> Log in </Link>
-                                    <Link className="btn btn-primary" to="/register"> Register Now </Link>
+                                    <Link className="login-btn" to="/signin"> Sign in </Link>
+                                    <Link className="btn btn-primary" to="/signup"> Register Now </Link>
                                 </>
                             ) : 
                             (
-                                <button className="btn btn-primary" style={{ "width": "80px", "height": "34px", "fontSize": "12px", "padding": "0 10px", "textDecoration": "none" }}>Sign Out</button>
+                                <button className="btn btn-primary" style={{ "width": "100px", "height": "40px", "fontSize": "14px", "padding": "0 10px", "textDecoration": "none"}}>Sign Out</button>
                             )
                                 }
                         </div>
