@@ -45,8 +45,8 @@ function Header({ isLoggedIn }) {
                             { !isLoggedIn ? 
                             (
                                 <>
-                                    <Link className="login-btn" to="/login"> Log in </Link>
-                                    <Link className="btn btn-primary" to="/register"> Register Now </Link>
+                                    <Link className="login-btn" to="/signin"> Sign in </Link>
+                                    <Link className="btn btn-primary" to="/signup"> Register Now </Link>
                                 </>
                             ) : 
                             (

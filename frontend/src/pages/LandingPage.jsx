@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../style/LandingPage.css';
+import { Link } from 'react-router-dom';
 
 function LandingPage() {
     return (
@@ -12,8 +13,8 @@ function LandingPage() {
                 <h1>Help Pro - Disaster Relief & Emergency Assistance</h1>
                 <p>A web-based platform designed to support disaster management, emergency response, and relief coordination in real time.</p>
                 <div className="button-group">
-                    <button className="btn btn-primary">Get Help Now</button>
-                    <button className="btn btn-secondary">Admin Login</button>
+                    <Link className="btn btn-primary" to='/signup'>Get Help Now</Link>
+                    <Link className="btn btn-secondary" to='/admin-signin'>Admin Login</Link>
                 </div>
             </section>
 
