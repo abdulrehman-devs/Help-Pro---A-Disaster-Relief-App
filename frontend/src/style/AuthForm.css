@@ -9,12 +9,13 @@
 
 .auth-container {
   background: #ffffff;
-  padding: 40px 35px;
+  padding: 60px 35px;
   width: 100%;
   max-width: 420px;
   border-radius: 10px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   animation: fadeIn 0.5s ease-in-out;
+  max-height: 700px;
 }
 
 .auth-container h2 {
@@ -78,6 +79,22 @@
   color: #1E3A8A;
   text-decoration: underline;
 }
+.message {
+  min-height: 20px; 
+  margin: 2px 0;
+  font-size: 14px;
+  color: #16A34A;
+  text-align: center;
+}
+
+.success {
+  color: rgb(0, 190, 0);
+}
+
+.error {
+  color: red;
+}
+
 
 @keyframes fadeIn {
   from {
