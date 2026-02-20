@@ -51,8 +51,9 @@ router.post('/signin', async (req, res) => {
 
          const token = jwt.sign(
             {
-                userId: userExists._id,
-                email: userExists.email,
+                id: userExists._id,
+                name: userExists.name,
+                phone: userExists.phone,
                 role: userExists.role 
             },
             process.env.JWT_SECRET,
@@ -60,7 +61,7 @@ router.post('/signin', async (req, res) => {
         );
 
         console.log("Logged in.");
-        return res.status(200).json({ message: "Logged in.", token: token });
+        return res.status(200).json({ message: "Logged in.", token: token, role: userExists.role });
 
     } catch (e) {
         console.error(e);

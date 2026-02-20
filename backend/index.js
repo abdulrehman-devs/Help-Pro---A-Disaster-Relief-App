@@ -4,6 +4,7 @@ import cors from 'cors';
 import connectDB from './config/dbConnection.js';
 import userRoutes from './routes/userRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
+import requestRoutes from './routes/requestRoutes.js';
 
 dotenv.config();
 
@@ -15,6 +16,11 @@ connectDB();
 
 app.use("/api/auth", userRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/requests", requestRoutes);
+
+app.use((req, res) => {
+  res.status(404).json({ message: "Route not found" });
+});
 
 app.listen(process.env.BACKEND_PORT, () => {
     console.log(`App started and running at ${process.env.BACKEND_PORT}`);

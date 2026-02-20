@@ -1,19 +1,19 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = ({ children, role }) => {
-  const userToken = localStorage.getItem("token");
-  const adminToken = localStorage.getItem("adminToken");
+const ProtectedRoute = ({ role }) => {
+  const token = localStorage.getItem("token");
+  const userRole = localStorage.getItem("role");
 
-  if (role === "user" && !userToken) {
+  if (!token) {
     return <Navigate to="/signin" replace />;
   }
 
-  if (role === "admin" && !adminToken) {
-    return <Navigate to="/admin-signin" replace />;
+  if (role && userRole !== role) {
+    return <Navigate to={`/${userRole}/dashboard`} replace />;
   }
 
-  return children;
+  return <Outlet />;
 };
 
 export default ProtectedRoute;

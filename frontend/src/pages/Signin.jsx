@@ -13,10 +13,20 @@ const Signin = () => {
             const res = await signin(formData);
             console.log(res.data);
             setResponse(res.data.message);
+            
             localStorage.setItem("token", res.data.token)
-            navigate('/user-dashboard')
+            localStorage.setItem("role", res.data.role);
+
+            if (res.data.role === "victim") {
+                navigate('/victim/dashboard');
+            }
+            else if (res.data.role === "donor") {
+                navigate('/donor/dashboard');
+            }
+
             return true;
         }
+
         catch (e) {
             if (e.response) {
                 if (e.response.status === 401) {
