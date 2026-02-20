@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { trusted } from "mongoose";
 import Users from '../models/user.js';
 
 const requestSchema = new mongoose.Schema(
@@ -32,6 +32,12 @@ const requestSchema = new mongoose.Schema(
       required: true
     },
 
+    description: {
+      type: String,
+      required: true,
+      trim: true
+    },
+
     location: {
       type: {
         type: String,
@@ -40,7 +46,7 @@ const requestSchema = new mongoose.Schema(
       },
 
       coordinates: {
-        type: [Number], 
+        type: [Number],
         required: true
       }
     },
@@ -48,11 +54,11 @@ const requestSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: [
-        "pending",   
-        "accepted",    
-        "completed",   
-        "rejected",   
-        "cancelled"    
+        "pending",
+        "accepted",
+        "completed",
+        "rejected",
+        "cancelled"
       ],
       default: "pending"
     }

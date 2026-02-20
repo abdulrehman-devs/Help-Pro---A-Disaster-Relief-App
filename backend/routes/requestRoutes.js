@@ -8,9 +8,9 @@ const router = express.Router();
 router.post("/", protect, authorizeRoles("victim"), async (req, res) => {
 
   try {
-    const { deliveryType, location } = req.body;
+    const { deliveryType, description, location } = req.body;
 
-    if (!deliveryType || !location || !location.coordinates || location.coordinates.length !== 2) {
+    if (!deliveryType || !location || !description || !location.coordinates || location.coordinates.length !== 2) {
       return res.status(400).json({ message: "Delivery type and valid location are required." });
     }
 
@@ -28,6 +28,7 @@ router.post("/", protect, authorizeRoles("victim"), async (req, res) => {
       victim: req.user.id,
       name: req.user.name,
       phone: req.user.phone,
+      description,
       location,
       status: "pending"
     });
@@ -56,5 +57,35 @@ router.get("/", protect, authorizeRoles("donor"), async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 });
+
+router.get("/victim/requests/", protect, authorizeRoles("victim"), async (req, res) => {
+
+  const victimId = req.user._id;
+
+  try {
+    const victimRequests = await Request.find({victim: victimId}).populate("donor", "name phone email");
+    res.status(200).json(victimRequests);
+  }
+
+  catch (e) {
+    console.error(e);
+    res.status(500).json({message: "Server Error"});
+  }
+})
+
+router.get("/donor/requests/", protect, authorizeRoles("donor"), async (req, res) => {
+
+  const donorId = req.user._id;
+
+  try {
+    const donorRequests = await Request.find({donor: donorId}).populate("victim", "name phone email");
+    res.status(200).json(donorRequests);
+  }
+
+  catch (e) {
+    console.error(e);
+    res.status(500).json({message: "Server Error"});
+  }
+})
 
 export default router;

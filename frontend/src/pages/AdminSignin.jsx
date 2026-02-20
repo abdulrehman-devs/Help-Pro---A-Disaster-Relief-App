@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AuthForm from '../components/AuthForm';
 import { adminSignin } from '../services/authService';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const AdminSignin = () => {
     const [response, setResponse] = useState("");
