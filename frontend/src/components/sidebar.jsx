@@ -11,6 +11,8 @@ function Sidebar({ userName = "User Name", userEmail = "user@example.com" }) {
     ? userName.split(" ").map((w) => w[0]).join("").toUpperCase().slice(0, 2)
     : "U";
 
+  
+
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
 
@@ -21,7 +23,6 @@ function Sidebar({ userName = "User Name", userEmail = "user@example.com" }) {
 
   return (
     <>
-      {/* ── Top navbar (mobile only) ── */}
       <header className="mobile-navbar">
         <div className="mobile-navbar-left">
           <button
