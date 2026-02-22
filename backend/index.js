@@ -5,6 +5,7 @@ import connectDB from './config/dbConnection.js';
 import userRoutes from './routes/userRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import requestRoutes from './routes/requestRoutes.js';
+import feedbackRoutes from './routes/feedbackRoutes.js';
 
 dotenv.config();
 
@@ -14,9 +15,10 @@ app.use(cors());
 
 connectDB();
 
-app.use("/api/auth", userRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/requests", requestRoutes);
+app.use("/api/feedbacks", feedbackRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });

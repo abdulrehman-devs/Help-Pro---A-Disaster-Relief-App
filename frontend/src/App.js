@@ -34,18 +34,23 @@ function App() {
         <Route path="/admin-signin" element={<PublicRoute><AdminSignin /></PublicRoute>} />
 
         <Route element={<ProtectedRoute role="victim" />}>
-          <Route path="/victim/dashboard" element={<DashboardLayout><VictimHome /></DashboardLayout>} />
-          <Route path="/victim/dashboard/requests" element={<DashboardLayout><VictimRequests /></DashboardLayout>} />
-          <Route path="/victim/dashboard/profile" element={<DashboardLayout><VictimProfile /></DashboardLayout>} />
-          <Route path="/victim/dashboard/feedback" element={<DashboardLayout><VictimFeedback /></DashboardLayout>} />
+          <Route element={<DashboardLayout />}>
+            <Route path="/victim/dashboard" element={<VictimHome />} />
+            <Route path="/victim/dashboard/requests" element={<VictimRequests />} />
+            <Route path="/victim/dashboard/profile" element={<VictimProfile />} />
+            <Route path="/victim/dashboard/feedback" element={<VictimFeedback />} />
+          </Route>
         </Route>
 
         <Route element={<ProtectedRoute role="donor" />}>
-          <Route path="/donor/dashboard" element={<DashboardLayout><DonorHome /></DashboardLayout>} />
-          <Route path="/donor/dashboard/requests" element={<DashboardLayout><DonorRequests /></DashboardLayout>} />
-          <Route path="/donor/dashboard/profile" element={<DashboardLayout><DonorProfile /></DashboardLayout>} />
-          <Route path="/donor/dashboard/feedback" element={<DashboardLayout><DonorFeedback /></DashboardLayout>} />
+          <Route element={<DashboardLayout />}>
+            <Route path="/donor/dashboard" element={<DonorHome />} />
+            <Route path="/donor/dashboard/requests" element={<DonorRequests />} />
+            <Route path="/donor/dashboard/profile" element={<DonorProfile />} />
+            <Route path="/donor/dashboard/feedback" element={<DonorFeedback />} />
+          </Route>
         </Route>
+        
       </Routes>
     </BrowserRouter>
   );

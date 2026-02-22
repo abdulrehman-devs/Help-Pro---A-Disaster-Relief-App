@@ -20,7 +20,7 @@ export default function DonorHome() {
   return (
     <div>
       <Sidebar
-        role="donor"                  // "donor" or "victim"
+        role="donor"                 
         userName="John Doe"
         userEmail="john@example.com"
       />
@@ -93,3 +93,4 @@ export default function DonorHome() {
     </div>
   );
 }
+ 

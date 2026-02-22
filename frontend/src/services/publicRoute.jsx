@@ -1,5 +1,3 @@
-import React from "react";
-
 const PublicRoute = ({ children }) => {
   const token = localStorage.getItem("token");
 
