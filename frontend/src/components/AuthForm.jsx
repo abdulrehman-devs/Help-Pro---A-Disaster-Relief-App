@@ -27,7 +27,12 @@ const AuthForm = ({ onSubmit, admin, response }) => {
   const validateForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailRegex.test(formData.email)) {
+    if (!formData.email || !formData.password) {
+      setError("Fill Out All The Fields.")
+      return false;
+    }
+
+    else if (!emailRegex.test(formData.email)) {
       setError("Invalid email address.");
       return false;
     }
@@ -64,9 +69,9 @@ const AuthForm = ({ onSubmit, admin, response }) => {
     const newValue =
       name !== "email" && name !== "role"
         ? value
-            .split(" ")
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ")
+          .split(" ")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" ")
         : value;
 
     setFormData({ ...formData, [name]: newValue });
@@ -152,37 +157,29 @@ const AuthForm = ({ onSubmit, admin, response }) => {
               onChange={handleChange}
             />
 
-            <div
-              className="radio-group"
-              style={{
-                display: "flex",
-                gap: "20px",
-                justifyContent: "flex-start",
-                marginBottom: "15px"
-              }}
-            >
-              <label>
+            <div className="radio-group">
+              <label className={`radio-option ${formData.role === "donor" ? "active" : ""}`}>
                 <input
                   type="radio"
                   name="role"
                   value="donor"
                   checked={formData.role === "donor"}
                   onChange={handleChange}
-                />{" "}
-                Donor
+                />
+                <span>Donor</span>
               </label>
-              <label>
+
+              <label className={`radio-option ${formData.role === "victim" ? "active" : ""}`}>
                 <input
                   type="radio"
                   name="role"
                   value="victim"
                   checked={formData.role === "victim"}
                   onChange={handleChange}
-                />{" "}
-                Victim
+                />
+                <span>Victim</span>
               </label>
             </div>
-
             <button onClick={handleSubmit}>Create Account</button>
 
             <p>

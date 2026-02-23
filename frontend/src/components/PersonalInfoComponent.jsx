@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import axios from "axios";
+import Sidebar from "./sidebar";
 
 function PersonalInfoComponent ({role}) {
 
-  const { userData } = useOutletContext();
+  const {userData} = useOutletContext();
+
   const [isEditing, setIsEditing] = useState(false);
   const [form, setForm] = useState({});
   const [saved, setSaved] = useState({});
@@ -57,7 +59,7 @@ function PersonalInfoComponent ({role}) {
 
   return (
     <div>
-      {/* Title and buttons */}
+      <Sidebar userData={userData} />
       <div className="page-title-bar">
         <div>
           <h1>Personal Info</h1>

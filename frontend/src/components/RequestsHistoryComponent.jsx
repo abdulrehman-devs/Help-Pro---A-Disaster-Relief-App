@@ -2,22 +2,29 @@ import { useState, useEffect } from "react";
 import '../style/Dashboard.css';
 import axios from 'axios';
 import Sidebar from '../components/sidebar';
+import { useOutletContext } from "react-router-dom";
 
 export default function VictimRequestsHistory() {
   const [role, setRole] = useState("");
   const [requests, setRequests] = useState([]);
 
+  const {userData} = useOutletContext();
+
   const fetchRequestsHistory = async () => {
     try {
       const token = localStorage.getItem("token");
+      const storedRole = localStorage.getItem("role");
 
-      const res = await axios.get("http://localhost:5000/api/requests/victim", {
-        headers: {
-          Authorization: `Bearer ${token}`
+      const res = await axios.get(
+        `http://localhost:5000/api/requests/${storedRole}`,
+        {
+          headers: { Authorization: `Bearer ${token}` }
         }
-      });
-      setRequests(res.data.activeRequests);
-      console.log(res.data.activeRequests);
+      );
+
+      setRequests(res.data.activeRequests || res.data.donorRequests || []);
+      console.log(res.data.donorRequests);
+
     } catch (e) {
       console.log("Error:", e.response?.data?.message || e.message);
     }
@@ -48,8 +55,6 @@ export default function VictimRequestsHistory() {
       await axios.delete(`http://localhost:5000/api/requests/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      alert("Request deleted successfully!");
-
       setRequests(requests.filter(req => req._id !== id));
     }
     catch (e) {
@@ -59,11 +64,7 @@ export default function VictimRequestsHistory() {
 
   return (
     <div>
-      <Sidebar
-        role="donor"
-        userName="John Doe"
-        userEmail="john@example.com"
-      />
+      <Sidebar userData={userData}/>
 
       <div className="page-title-bar">
         <div>
@@ -96,16 +97,16 @@ export default function VictimRequestsHistory() {
                 <td>{req.status}</td>
                 <td>{req.donor || "Not assigned"}</td>
                 <td><button style={{
-                  color: "#fff",                 
-                  backgroundColor: "#e74c3c",   
-                  border: "none",               
-                  padding: "6px 12px",           
-                  borderRadius: "4px",           
-                  cursor: "pointer",            
-                  fontWeight: "bold",           
-                  transition: "background-color 0.2s ease", 
+                  color: "#fff",
+                  backgroundColor: "#e74c3c",
+                  border: "none",
+                  padding: "6px 12px",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  fontWeight: "bold",
+                  transition: "background-color 0.2s ease",
                 }}
-                  onMouseEnter={e => e.currentTarget.style.backgroundColor = "#c0392b"} 
+                  onMouseEnter={e => e.currentTarget.style.backgroundColor = "#c0392b"}
                   onMouseLeave={e => e.currentTarget.style.backgroundColor = "#e74c3c"} onClick={() => handleDelete(req._id)}>Delete</button></td>
               </tr>
             ))}

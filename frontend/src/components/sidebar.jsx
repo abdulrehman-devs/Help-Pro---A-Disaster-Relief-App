@@ -2,16 +2,17 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../style/Sidebar.css";
 
-function Sidebar({ userName = "User Name", userEmail = "user@example.com" }) {
+function Sidebar({ userData }) {
   const navigate = useNavigate();
+
   const role = localStorage.getItem("role");
+
   const isVictim = role === "victim";
   const dashTitle = isVictim ? "Victim Dashboard" : "Donor Dashboard";
-  const initials = userName
-    ? userName.split(" ").map((w) => w[0]).join("").toUpperCase().slice(0, 2)
-    : "U";
 
-  
+  const initials = userData
+    ? userData?.name.split(" ").map((w) => w[0]).join("").toUpperCase().slice(0, 2)
+    : "U";
 
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
@@ -42,6 +43,7 @@ function Sidebar({ userName = "User Name", userEmail = "user@example.com" }) {
           </button>
           <span className="mobile-nav-title">{dashTitle}</span>
         </div>
+
         <span className={`role-badge ${role}`}>
           {isVictim ? "Victim" : "Donor"}
         </span>
@@ -107,10 +109,8 @@ function Sidebar({ userName = "User Name", userEmail = "user@example.com" }) {
           </ul>
         </nav>
 
-        {/* Divider */}
         <div className="sidebar-divider" />
 
-        {/* Footer */}
         <div className="sidebar-footer">
           <div
             className="user-avatar"
@@ -122,8 +122,8 @@ function Sidebar({ userName = "User Name", userEmail = "user@example.com" }) {
           >
             {initials}
           </div>
-          <p className="user-name">{userName}</p>
-          <span className="user-email">{userEmail}</span>
+          <p className="user-name">{userData?.name || "User"}</p>
+          <span className="user-email">{userData?.email || "email@example.com"}</span>
 
           <button className="logout-btn" onClick={handleLogout}>
             <i className="bi bi-box-arrow-right"></i>
