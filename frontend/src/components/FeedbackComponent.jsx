@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import '../style/Dashboard.css';
 import Sidebar from '../components/sidebar';
+import { useOutletContext } from "react-router-dom";
 
 export default function VictimFeedback() {
   const [form, setForm] = useState({
@@ -12,6 +13,8 @@ export default function VictimFeedback() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [recentFeedbacks, setRecentFeedbacks] = useState([]);
+
+  const {userData} = useOutletContext();
 
   useEffect(() => {
     const fetchRecentFeedbacks = async () => {
@@ -65,11 +68,7 @@ export default function VictimFeedback() {
 
   return (
     <div>
-      <Sidebar
-        role="donor"
-        userName="John Doe"
-        userEmail="john@example.com"
-      />
+      <Sidebar userData={userData} />
       <div className="page-title-bar">
         <div>
           <h1>Feedback & Report</h1>

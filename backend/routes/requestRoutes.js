@@ -105,14 +105,33 @@ router.get("/victim", protect, authorizeRoles("victim"), async (req, res) => {
 
 router.get("/donor", protect, authorizeRoles("donor"), async (req, res) => {
 
-  const donorId = req.user._id;
+  const donorId = new mongoose.Types.ObjectId(req.user.id);
 
   try {
     const donorRequests = await Request.find({ donor: donorId }).populate("victim", "name phone email");
-    res.status(200).json(donorRequests);
-  }
 
-  catch (e) {
+    const pendingCount = await Request.countDocuments({
+      donor: donorId,
+      status: "pending"
+    });
+
+    const fulfilledCount = await Request.countDocuments({
+      donor: donorId,
+      status: "fulfilled"
+    });
+
+    const totalCount = await Request.countDocuments({
+      donor: donorId
+    });
+
+    res.status(200).json({
+      donorRequests,
+      pendingCount,
+      fulfilledCount,
+      totalCount
+    });
+
+  } catch (e) {
     console.error(e);
     res.status(500).json({ message: "Server Error" });
   }

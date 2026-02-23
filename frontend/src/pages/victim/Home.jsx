@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import Sidebar from "../../components/sidebar";
+import { useOutletContext } from "react-router-dom";
 
 const initialForm = {
   deliveryType: "",
@@ -20,6 +22,8 @@ const activities = [
 ];
 
 export default function VictimHome() {
+  const {userData} = useOutletContext();
+
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
@@ -111,6 +115,7 @@ export default function VictimHome() {
 
       const activeRequests = res.data.activeRequests || [];
       setRequests(activeRequests);
+      console.log(activeRequests);
 
       setStats([
         { icon: "bi-gift", label: "Requests Posted", value: res.data.totalCount || 0, color: "green" },
@@ -201,9 +206,10 @@ export default function VictimHome() {
 
   return (
     <div>
+      <Sidebar userData={userData}/>
       <div className="page-title-bar">
         <div>
-          <h1>Dashboard Overview</h1>
+          <h1>Dashboard Overview | Victim</h1>
           <span className="breadcrumb-text">
             <i className="bi bi-house-door me-1"></i> Home &gt; Overview
           </span>
@@ -251,7 +257,7 @@ export default function VictimHome() {
             {requests.length === 0 && (
               <div className="map-overlay">
                 <i className="bi bi-pin-map-fill"></i>
-                No requests posted yet.
+                Only 2 Active Requests are Allowed.
               </div>
             )}
           </div>
