@@ -120,7 +120,8 @@ export default function VictimHome() {
       setStats([
         { icon: "bi-gift", label: "Requests Posted", value: res.data.totalCount || 0, color: "green" },
         { icon: "bi-people", label: "Help Got", value: res.data.fulfilledCount || 0, color: "blue" },
-        { icon: "bi-hourglass-split", label: "In Progress", value: res.data.pendingCount || 0, color: "orange" },
+        { icon: "bi-hourglass-split", label: "Pending", value: res.data.pendingCount || 0, color: "orange" },
+        { icon: "bi-hourglass-split", label: "Requests Accepted", value: res.data.acceptedCount || 0, color: "blue" },
       ]);
     } catch (e) {
       console.error("Error fetching requests:", e.response?.data || e.message);

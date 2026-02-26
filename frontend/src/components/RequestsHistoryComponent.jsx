@@ -52,7 +52,7 @@ export default function VictimRequestsHistory() {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/requests/delete/${id}`, {
+      await axios.delete(`http://localhost:5000/api/requests/donor/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setRequests(requests.filter(req => req._id !== id));
