@@ -9,4 +9,4 @@ const PersonalInfo = () => {
   );
 }
 
-export default PersonalInfo;
+export default PersonalInfo; 

@@ -16,9 +16,10 @@ router.post("/", protect, authorizeRoles("victim"), async (req, res) => {
     }
 
     const victimId = new mongoose.Types.ObjectId(req.user.id);
+
     const activeRequests = await Request.countDocuments({
       victim: victimId,
-      status: { $in: ["pending", "accepted"] }
+      status: { $in: ["Pending", "Accepted"] }
     });
 
     if (activeRequests >= 2) {
@@ -35,7 +36,7 @@ router.post("/", protect, authorizeRoles("victim"), async (req, res) => {
       victim: victimId,
       name: req.user.name,
       phone: req.user.phone,
-      status: "pending"
+      status: "Pending"
     });
 
     const savedRequest = await newRequest.save();
@@ -54,7 +55,7 @@ router.get("/", protect, authorizeRoles("donor"), async (req, res) => {
 
   try {
     const requests = await Request.find({
-      status: { $in: ["pending", "accepted"] },
+      status: { $in: ["Pending", "Accepted"] },
     }).populate("victim", "name phone email");
 
     res.status(200).json(requests);
@@ -71,17 +72,22 @@ router.get("/victim", protect, authorizeRoles("victim"), async (req, res) => {
 
     const activeRequests = await Request.find({
       victim: victimId,
-      status: { $in: ["pending", "accepted"] }
+      status: { $in: ["Pending", "Accepted"] }
     }).populate("donor", "name phone email");
 
     const pendingCount = await Request.countDocuments({
       victim: victimId,
-      status: "pending"
+      status: "Pending"
+    });
+
+    const acceptedCount = await Request.countDocuments({
+      victim: victimId,
+      status: "Accepted"
     });
 
     const fulfilledCount = await Request.countDocuments({
       victim: victimId,
-      status: "fulfilled"
+      status: "Fulfilled"
     });
 
     const totalCount = await Request.countDocuments({
@@ -93,6 +99,7 @@ router.get("/victim", protect, authorizeRoles("victim"), async (req, res) => {
     res.status(200).json({
       activeRequests,
       pendingCount,
+      acceptedCount,
       fulfilledCount,
       totalCount
     });
@@ -108,16 +115,16 @@ router.get("/donor", protect, authorizeRoles("donor"), async (req, res) => {
   const donorId = new mongoose.Types.ObjectId(req.user.id);
 
   try {
-    const donorRequests = await Request.find({ donor: donorId }).populate("victim", "name phone email");
+    const donorRequests = await Request.find({ donor: donorId, status: "Accepted" }).populate("victim", "name phone email");
 
     const pendingCount = await Request.countDocuments({
       donor: donorId,
-      status: "pending"
+      status: "Accepted"
     });
 
     const fulfilledCount = await Request.countDocuments({
       donor: donorId,
-      status: "fulfilled"
+      status: "Fulfilled"
     });
 
     const totalCount = await Request.countDocuments({
@@ -137,7 +144,7 @@ router.get("/donor", protect, authorizeRoles("donor"), async (req, res) => {
   }
 });
 
-router.delete("/delete/:id", protect, async (req, res) => {
+router.delete("/donor/delete/:id", protect, async (req, res) => {
   const requestId = req.params.id;
 
   try {
@@ -147,12 +154,43 @@ router.delete("/delete/:id", protect, async (req, res) => {
       return res.status(404).json({ message: "Request not found" });
     }
 
-    await request.deleteOne();
+    if (request.status === "Accepted") {
+      request.status = "Pending";
+      request.donor = null;
+      await request.save();
+      return res.status(200).json({ message: "Accepted request reverted to Pending" });
+    }
 
-    return res.status(200).json({ message: "Request deleted successfully" });
+    if (request.status === "Fulfilled") {
+      await request.deleteOne();
+      return res.status(200).json({ message: "Fulfilled request deleted" });
+    }
+
+    return res.status(400).json({ message: "Cannot delete this request" });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Server error" });
+  }
+});
+
+router.patch("/donor/:id", protect, authorizeRoles("donor"), async (req, res) => {
+  const donorId = new mongoose.Types.ObjectId(req.user.id);
+  const requestId = req.params.id;
+
+  try {
+    const request = await Request.findByIdAndUpdate(
+      requestId,
+      { $set: { donor: donorId, status: "Accepted" } },
+      { new: true }
+    );
+
+    if (!request) {
+      return res.status(404).json({ message: "Request not found" });
+    }
+
+    res.status(200).json({ message: "Request Accepted | Donor Added", request });
+  } catch (e) {
+    res.status(500).json({ message: "Internal Server Error", error: e });
   }
 });
 
