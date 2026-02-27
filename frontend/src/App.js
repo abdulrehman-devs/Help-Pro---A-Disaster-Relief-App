@@ -15,6 +15,7 @@ import VictimProfile from "./pages/victim/PersonalInfo";
 import VictimFeedback from "./pages/victim/Feedback";
 
 import DonorHome from "./pages/donor/Home";
+import InProgress from "./pages/donor/InProgress";
 import DonorRequests from "./pages/donor/RequestsHistory";
 import DonorProfile from "./pages/donor/PersonalInfo";
 import DonorFeedback from "./pages/donor/Feedback";
@@ -45,6 +46,7 @@ function App() {
         <Route element={<ProtectedRoute role="donor" />}>
           <Route element={<DashboardLayout />}>
             <Route path="/donor/dashboard" element={<DonorHome />} />
+            <Route path="/donor/dashboard/in-progress" element={<InProgress />} />
             <Route path="/donor/dashboard/requests" element={<DonorRequests />} />
             <Route path="/donor/dashboard/profile" element={<DonorProfile />} />
             <Route path="/donor/dashboard/feedback" element={<DonorFeedback />} />

@@ -5,27 +5,36 @@ import Sidebar from '../components/sidebar';
 import { useOutletContext } from "react-router-dom";
 
 export default function VictimRequestsHistory() {
+
   const [role, setRole] = useState("");
   const [requests, setRequests] = useState([]);
+  const [hoveredId, setHoveredId] = useState(null);
+  const [hoverData, setHoverData] = useState(null);
 
-  const {userData} = useOutletContext();
+  const { userData } = useOutletContext();
 
   const fetchRequestsHistory = async () => {
     try {
       const token = localStorage.getItem("token");
       const storedRole = localStorage.getItem("role");
 
+      const url =
+        storedRole === "donor"
+          ? `http://localhost:5000/api/requests/${storedRole}?type=Accepted,Fulfilled`
+          : `http://localhost:5000/api/requests/${storedRole}`;
+
       const res = await axios.get(
-        `http://localhost:5000/api/requests/${storedRole}`,
+        url,
         {
           headers: { Authorization: `Bearer ${token}` }
         }
       );
 
-      setRequests(res.data.activeRequests || res.data.donorRequests || []);
-      console.log(res.data.donorRequests);
+      setRequests(res.data.activeRequests || res.data || []);
+      console.log(res.data)
 
-    } catch (e) {
+    }
+    catch (e) {
       console.log("Error:", e.response?.data?.message || e.message);
     }
   };
@@ -38,10 +47,10 @@ export default function VictimRequestsHistory() {
     const role = localStorage.getItem("role");
 
     if (role === "victim") {
-      setRole("Donor")
+      setRole("donor")
     }
     else {
-      setRole("Victim")
+      setRole("victim")
     }
   }
 
@@ -52,7 +61,8 @@ export default function VictimRequestsHistory() {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/requests/donor/delete/${id}`, {
+      const role = localStorage.getItem("role");
+      await axios.delete(`http://localhost:5000/api/requests/${role}/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setRequests(requests.filter(req => req._id !== id));
@@ -62,9 +72,25 @@ export default function VictimRequestsHistory() {
     }
   };
 
+  const handleHover = (req) => {
+
+    setHoverData({
+      phone: req.donor?.phone || req.victim?.phone,
+      city: req.donor?.city || req.victim?.city || 'N/A'
+    });
+
+    setHoveredId(req._id);
+  };
+
+  const handleLeave = () => {
+    setHoveredId(null);
+    setHoverData(null);
+  };
+
+
   return (
     <div>
-      <Sidebar userData={userData}/>
+      <Sidebar userData={userData} />
 
       <div className="page-title-bar">
         <div>
@@ -79,23 +105,52 @@ export default function VictimRequestsHistory() {
         <table className="data-table">
           <thead>
             <tr>
-              <th>Request ID</th>
+              <th className="hide-mobile">Serial No</th>
               <th>Type</th>
-              <th>Date</th>
-              <th>Priority</th>
+              <th className="hide-mobile">Date</th>
+              <th className="hide-mobile">Priority</th>
               <th>Status</th>
-              <th>Assigned {role}</th>
+              <th>{role}</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             {requests.map((req, i) => (
               <tr key={i}>
-                <td>{req._id}</td>
+                <td className="hide-mobile" style={{ fontWeight: "700" }}>{i + 1}</td>
                 <td>{req.deliveryType}</td>
-                <td>{new Date(req.createdAt).toLocaleDateString()}</td>
-                <td>{"High"}</td>
+                <td className="hide-mobile">{new Date(req.createdAt).toLocaleDateString()}</td>
+                <td className="hide-mobile">{"High"}</td>
                 <td>{req.status}</td>
-                <td>{req.donor || "Not assigned"}</td>
+                <td
+                  onMouseOver={() => handleHover(req)}
+                  onMouseLeave={handleLeave}
+                  style={{ position: "relative", cursor: "pointer" }}
+                >
+                  {req.donor?.name || req.victim?.name || "Not assigned"}
+
+                  {hoveredId === req._id && hoverData && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "25%",
+                        transform: "translateY(-70%)",
+                        background: "#ffffff",
+                        color: "#2d3436",
+                        padding: "14px",
+                        borderRadius: "10px",
+                        boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
+                        width: "200px",
+                        zIndex: 999,
+                        transition: "all 0.2s ease"
+                      }}
+                    >
+                      <div style={{ marginBottom: "8px" }}><strong>📞:  </strong>{hoverData.phone}</div>
+                      <div><strong>📍:  </strong> {hoverData.city}</div>
+                    </div>
+                  )}
+                </td>
                 <td><button style={{
                   color: "#fff",
                   backgroundColor: "#e74c3c",
@@ -107,7 +162,14 @@ export default function VictimRequestsHistory() {
                   transition: "background-color 0.2s ease",
                 }}
                   onMouseEnter={e => e.currentTarget.style.backgroundColor = "#c0392b"}
-                  onMouseLeave={e => e.currentTarget.style.backgroundColor = "#e74c3c"} onClick={() => handleDelete(req._id)}>Delete</button></td>
+                  onMouseLeave={e => e.currentTarget.style.backgroundColor = "#e74c3c"} onClick={() => handleDelete(req._id)}>
+                  {
+                    req.role === "Donor" && req.status === "Accepted" ?
+                      "Cancel Request" :
+                      "Delete"
+                  }
+                </button>
+                </td>
               </tr>
             ))}
           </tbody>
