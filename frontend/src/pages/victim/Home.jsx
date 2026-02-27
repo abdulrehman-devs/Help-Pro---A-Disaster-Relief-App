@@ -22,7 +22,7 @@ const activities = [
 ];
 
 export default function VictimHome() {
-  const {userData} = useOutletContext();
+  const { userData } = useOutletContext();
 
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState(initialForm);
@@ -118,10 +118,10 @@ export default function VictimHome() {
       console.log(activeRequests);
 
       setStats([
-        { icon: "bi-gift", label: "Requests Posted", value: res.data.totalCount || 0, color: "green" },
-        { icon: "bi-people", label: "Help Got", value: res.data.fulfilledCount || 0, color: "blue" },
-        { icon: "bi-hourglass-split", label: "Pending", value: res.data.pendingCount || 0, color: "orange" },
-        { icon: "bi-hourglass-split", label: "Requests Accepted", value: res.data.acceptedCount || 0, color: "blue" },
+        { icon: "bi-gift", label: "Total Requests Posted", value: res.data.totalCount || 0, color: "green" },
+        { icon: "bi-people", label: "Completed Requests", value: res.data.fulfilledCount || 0, color: "blue" },
+        { icon: "bi-hourglass-split", label: "Pending Requests", value: res.data.pendingCount || 0, color: "orange" },
+        { icon: "bi-hourglass-split", label: "Accepted Requests", value: res.data.acceptedCount || 0, color: "blue" },
       ]);
     } catch (e) {
       console.error("Error fetching requests:", e.response?.data || e.message);
@@ -185,9 +185,10 @@ export default function VictimHome() {
       marker.bindPopup(`
         <div style="font-family:'Segoe UI',sans-serif;min-width:180px;">
           <div style="font-weight:700;font-size:0.95rem;margin-bottom:4px;color:#d63031;">
-            <i class='bi bi-send-plus'></i> ${req.deliveryType || "Request"}
+            <i class='bi bi-send-plus'></i>${req.deliveryType || "Request"}
           </div>
-          <div style="font-size:0.82rem;color:#2d3436;">${req.description || ""}</div>
+          <div style="font-size:0.82rem;color:#2d3436;margin-bottom:6px;">Description: ${req.description || ""}</div>
+          <div style="font-size:0.82rem;color:#2d3436;">Status: ${req.status || ""}</div>
           <div style="font-size:0.75rem;color:#636e72;margin-top:6px;">
             📍 ${lat.toFixed(4)}, ${lng.toFixed(4)}
           </div>
@@ -207,18 +208,48 @@ export default function VictimHome() {
 
   return (
     <div>
-      <Sidebar userData={userData}/>
+      <Sidebar userData={userData} />
       <div className="page-title-bar">
         <div>
           <h1>Dashboard Overview | Victim</h1>
           <span className="breadcrumb-text">
-            <i className="bi bi-house-door me-1"></i> Home &gt; Overview
+            <i className="bi bi-house-door me-1"></i>Home &gt; Overview
           </span>
         </div>
         <span className="breadcrumb-text">
           Last updated: {new Date().toLocaleDateString()}
         </span>
       </div>
+
+      {requests.map((req) =>
+        req.status === "Accepted" && req.otp ? (
+          <div
+            key={req._id}
+            style={{
+              padding: "12px 16px",
+              marginBottom: "12px",
+              background: "#dff9fb",
+              borderLeft: "4px solid #00cec9",
+              borderRadius: "6px",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.15)",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              fontSize: "0.95rem",
+            }}
+          >
+            <div>
+              <strong>Delivery Type:</strong> {req.deliveryType} <br />
+              <strong>Donor:</strong> {req.donor?.name} <br />
+              <strong>OTP Code ( Expiry Time 10m ):</strong> {req.otp} <br />
+              <strong>Posted at:</strong> {new Date(req.createdAt).toLocaleDateString()}
+            </div>
+            <div style={{ color: "#636e72" }}>
+              Status: {req.status}
+            </div>
+          </div>
+        ) : null
+      )}
 
       <div className="request-banner" onClick={openModal}>
         <div className="request-banner-icon">
@@ -235,7 +266,7 @@ export default function VictimHome() {
 
       <div className="row g-10 mb-4">
         {stats.map((s, i) => (
-          <div className="col-lg-3 col-md-6" key={i}>
+          <div className="col-lg-3 col-md-6 stats" key={i}>
             <div className="dash-card stat-card">
               <div className={`stat-icon ${s.color}`}>
                 <i className={`bi ${s.icon}`}></i>

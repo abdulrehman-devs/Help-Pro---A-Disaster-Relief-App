@@ -73,7 +73,7 @@ export default function VictimFeedback() {
         <div>
           <h1>Feedback & Report</h1>
           <span className="breadcrumb-text">
-            <i className="bi bi-house-door me-1"></i> Home &gt; Feedback
+            <i className="bi bi-house-door me-1"></i>Home &gt; Feedback
           </span>
         </div>
       </div>

@@ -18,6 +18,7 @@ export default function VictimHome() {
 
   const [requests, setRequests] = useState([]);
   const [stats, setStats] = useState([]);
+  const [acceptedRequests, setAcceptedRequests] = useState(new Set());
 
   const mapRef = useRef(null);
   const leafletMap = useRef(null);
@@ -26,13 +27,14 @@ export default function VictimHome() {
   const getRequests = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/requests/", {
+      const res = await axios.get("http://localhost:5000/api/requests/donor", {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      setRequests(res.data || []);
-      console.log(res.data);
-    } catch (e) {
+      setRequests(res.data.pendingRequests || []);
+      console.log(res.data.pendingRequests);
+    }
+    catch (e) {
       console.error("Error fetching requests:", e.response?.data || e.message);
     }
   };
@@ -94,103 +96,86 @@ export default function VictimHome() {
 
     markersLayer.current.clearLayers();
 
-    if (requests.length === 0) return;
-
-    const bounds = [];
+    if (!requests || requests.length === 0) return;
 
     requests.forEach((req) => {
       const coords = req?.location?.coordinates;
       if (!coords || coords.length < 2) return;
 
-      const lng = coords[0];
-      const lat = coords[1];
+      const [lng, lat] = coords;
+
+      if (acceptedRequests.has(req._id)) return;
 
       const marker = L.marker([lat, lng], {
         icon: L.divIcon({
           className: "",
-          html: `
-            <div style="
-              background: linear-gradient(135deg,#e17055,#d63031);
-              width: 34px;
-              height: 34px;
-              border-radius: 50% 50% 50% 0;
-              transform: rotate(-45deg);
-              border: 3px solid #fff;
-              box-shadow: 0 2px 8px rgba(0,0,0,0.35);
-              display:flex;
-              align-items:center;
-              justify-content:center;
-            ">
-              <span style="transform:rotate(45deg);font-size:14px;">📍</span>
-            </div>`,
+          html: `<div style="
+          background: linear-gradient(135deg,#e17055,#d63031);
+          width: 34px; height: 34px; 
+          border-radius: 50% 50% 50% 0;
+          transform: rotate(-45deg);
+          border: 3px solid #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        ">
+          <span style="transform:rotate(45deg);font-size:14px;">📍</span>
+        </div>`,
           iconSize: [34, 34],
           iconAnchor: [17, 34],
           popupAnchor: [0, -36],
         }),
-      }, [requests]);
+      });
 
+      // Popup content
       marker.bindPopup(`
-      <div style=" font-family:'Segoe UI',sans-serif; width: 300px; padding: 12px; word-wrap: break-word; overflow-wrap: break-word;">
-          
-      <div style="font-weight:700;font-size:0.95rem;margin-bottom:16px;color:#d63031;">
-            <p>${req.victim?.name || ""}</p>
-          </div>
-
-          <div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">
-            <p><span style="font-weight:900;">Delivery Type:</span> ${req.deliveryType || ""}</p>
-          </div>
-
-          <div style="font-size:0.9rem;color:#2d3436;margin-bottom:2px;">
-            <p><span style="font-weight:900;">Description:</span> ${req.description || ""}</p>
-          </div>
-
-          <div style="font-size:0.9rem;color:#2d3436;margin-bottom:4px;">
-            <p><span style="font-weight:900;">Status:</span> ${req.status || ""}</p>
-          </div>
-
-          <button 
-            id="accept-btn-${req._id}" 
-            ${req.status === "Accepted" ? "disabled" : ""}
-            style="
-              background: ${req.status === "Accepted" ? "gray" : "#00b894"};
-              color:white;
-              border:none;
-              padding:6px 10px;
-              border-radius:6px;
-              cursor: ${req.status === "Accepted" ? "not-allowed" : "pointer"};
-              font-size:0.8rem;
-            "
-          >
-            ${req.status !== "Accepted" ? "Yes, Accept" : "Request Accepted"}
-          </button>
-    </div>
-`);
+      <div style="font-family:'Segoe UI',sans-serif;width:230px;padding:12px;word-wrap:break-word;overflow-wrap:break-word;">
+        <div style="font-weight:700;font-size:0.95rem;margin-bottom:8px;color:#d63031;">
+          ${req.victim?.name || ""}
+        </div>
+        <div style="font-weight:600;font-size:0.9rem;margin-bottom:2px;">
+          <p><strong>Delivery Type:</strong> ${req.deliveryType || ""}</p>
+        </div>
+        <div style="font-size:0.9rem;color:#2d3436;margin-bottom:2px;">
+          <p><strong>Description:</strong> ${req.description || ""}</p>
+        </div>
+        <div style="font-size:0.9rem;color:#2d3436;margin-bottom:4px;">
+          <p><strong>Status:</strong> ${req.status || ""}</p>
+        </div>
+        <button id="accept-btn-${req._id}" style="
+          background: #00b894;
+          color: white;
+          border: none;
+          padding: 6px 10px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 0.8rem;
+        ">
+          Accept Request
+        </button>
+      </div>
+    `);
 
       marker.on("popupopen", () => {
         const btn = document.getElementById(`accept-btn-${req._id}`);
-
-        if (btn && !btn.disabled) {
-
-          btn.addEventListener("click", async () => {
+        if (btn) {
+          btn.onclick = async () => {
             try {
+              btn.disabled = true;
+              btn.style.background = "#b2bec3";
               await handleSubmit(req._id);
-            }
-            catch (err) {
+              setAcceptedRequests(prev => new Set(prev).add(req._id));
+              markersLayer.current.removeLayer(marker); // remove marker
+            } catch (err) {
               console.error(err);
             }
-          });
+          };
         }
       });
 
       markersLayer.current.addLayer(marker);
-      bounds.push([lat, lng]);
     });
-
-    if (bounds.length > 0) {
-      leafletMap.current.fitBounds(bounds, { padding: [40, 40] });
-    }
-  },);
-
+  });
 
   return (
     <div>
@@ -209,7 +194,7 @@ export default function VictimHome() {
 
       <div className="row g-10 mb-4 stats-cards">
         {stats.map((s, i) => (
-          <div className="col-lg-3 col-md-6" key={i}>
+          <div className="col-lg-3 col-md-6 stats" key={i}>
             <div className="dash-card stat-card">
               <div className={`stat-icon ${s.color}`}>
                 <i className={`bi ${s.icon}`}></i>
@@ -225,7 +210,7 @@ export default function VictimHome() {
         <div className="map" >
           <div className="dash-card" style={{ maxWidth: "100vw", height: "700px" }}>
             <h5 style={{ fontWeight: 700, marginBottom: 16 }}>
-              <i className="bi bi-geo-alt me-2" style={{ color: "#00b894" }}></i>
+              <i className="bi bi-geo-alt me-2" style={{ color: "red" }}></i>
               Active Requests From Victims
             </h5>
             <div className="map-container" ref={mapRef} style={{ height: 620, borderRadius: 14, zIndex: 0 }}></div>

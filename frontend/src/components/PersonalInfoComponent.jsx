@@ -63,10 +63,10 @@ function PersonalInfoComponent ({role}) {
       <div className="page-title-bar">
         <div>
           <h1>Personal Info</h1>
-          <span className="breadcrumb-text">{role} Dashboard / Personal Info</span>
+          <span className="breadcrumb-text">Home &gt; Personal Info</span>
         </div>
 
-        <div style={{ display: "flex", gap: "10px" }}>
+        <div style={{ display: "flex", gap: "10px", marginTop: "30px" }}>
           {!isEditing ? (
             <button className="btn-primary-custom" onClick={handleEdit}>
               <i className="bi bi-pencil-square" style={{ marginRight: "8px" }}></i>

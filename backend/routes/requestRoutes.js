@@ -72,7 +72,7 @@ router.get("/victim", protect, authorizeRoles("victim"), async (req, res) => {
 
     const activeRequests = await Request.find({
       victim: victimId,
-      status: { $in: ["Pending", "Accepted"] }
+      status: { $in: ["Pending", "Accepted", "Fulfilled"] }
     }).populate("donor", "name phone email");
 
     const pendingCount = await Request.countDocuments({
@@ -110,37 +110,64 @@ router.get("/victim", protect, authorizeRoles("victim"), async (req, res) => {
   }
 });
 
-router.get("/donor", protect, authorizeRoles("donor"), async (req, res) => {
-
-  const donorId = new mongoose.Types.ObjectId(req.user.id);
+router.delete("/victim/delete/:id", protect, async (req, res) => {
+  const requestId = req.params.id;
 
   try {
-    const donorRequests = await Request.find({ donor: donorId, status: "Accepted" }).populate("victim", "name phone email");
+    const request = await Request.findById(requestId);
 
-    const pendingCount = await Request.countDocuments({
-      donor: donorId,
-      status: "Accepted"
-    });
+    if (!request) {
+      return res.status(404).json({ message: "Request not found" });
+    }
 
-    const fulfilledCount = await Request.countDocuments({
-      donor: donorId,
-      status: "Fulfilled"
-    });
+    if (request.status === "Pending") {
+      await request.deleteOne();
+      return res.status(200).json({ message: "Pending Request Deleted" });
+    }
+  }
+  catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Server error" });
+  }
+});
 
-    const totalCount = await Request.countDocuments({
-      donor: donorId
-    });
+router.get("/donor", protect, authorizeRoles("donor"), async (req, res) => {
+  try {
+    const donorId = new mongoose.Types.ObjectId(req.user.id);
+    const { type } = req.query;
 
-    res.status(200).json({
-      donorRequests,
+    let query = { donor: donorId };
+
+    if (type) {
+      const statuses = type.split(","); 
+      query.status = { $in: statuses };
+
+      const requests = await Request.find(query)
+        .populate("victim", "name phone city address")
+        .sort({ createdAt: -1 });
+
+      return res.status(200).json( requests );
+    }
+
+    const pendingRequests = await Request.find({status: "Pending"})
+      .populate("victim", "name phone city address")
+
+    const pendingCount = await Request.countDocuments({ donor: donorId, status: "Pending" });
+    const acceptedCount = await Request.countDocuments({ donor: donorId, status: "Accepted" });
+    const fulfilledCount = await Request.countDocuments({ donor: donorId, status: "Fulfilled" });
+    const totalCount = await Request.countDocuments({ donor: donorId });
+
+    return res.status(200).json({
+      pendingRequests,
       pendingCount,
+      acceptedCount,
       fulfilledCount,
       totalCount
     });
 
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({ message: "Server Error" });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ message: "Server Error" });
   }
 });
 
@@ -193,5 +220,84 @@ router.patch("/donor/:id", protect, authorizeRoles("donor"), async (req, res) =>
     res.status(500).json({ message: "Internal Server Error", error: e });
   }
 });
+
+// ---------------------------------- OTP --------------------------------------------
+
+router.post("/donor/send-otp/:id", protect, authorizeRoles("donor"), async (req, res) => {
+
+  const id = req.params.id;
+
+  try {
+    const request = await Request.findById(id).populate("victim");
+
+    if (!request) {
+      return res.status(404).json({ message: "Request not found" });
+    }
+
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    request.otp = otp;
+    request.otpExpires = Date.now() + 5 * 60 * 1000;
+    await request.save();
+
+    console.log("OTP sent to victim:", otp);
+
+    res.status(200).json({
+      success: true,
+      message: "OTP sent successfully",
+    });
+
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+}
+);
+
+router.post("/donor/verify-otp/:id", protect, authorizeRoles("donor"), async (req, res) => {
+  try {
+    const { otp } = req.body;
+
+    if (!otp) {
+      return res.status(400).json({ success: false, message: "OTP is required" });
+    }
+
+    const request = await Request.findById(req.params.id);
+    if (!request) {
+      return res.status(404).json({ success: false, message: "Request not found" });
+    }
+
+    if (!request.otp || !request.otpExpires) {
+      return res.status(400).json({ success: false, message: "No OTP set for this request" });
+    }
+
+    if (String(request.otp) !== String(otp)) {
+      return res.status(400).json({ success: false, message: "Invalid OTP" });
+    }
+
+    if (request.otpExpires < Date.now()) {
+      return res.status(400).json({ success: false, message: "OTP expired" });
+    }
+
+    if (String(request.otp) === String(otp)) {
+      request.status = "Fulfilled";
+      request.otp = undefined;
+      request.otpExpires = undefined;
+
+      await request.save();
+
+      return res.status(200).json({
+        success: true,
+        message: "Request marked as Completed",
+        updatedRequest: request,
+      });
+    }
+
+  } catch (error) {
+    return res.status(500).json({ success: false, message: "Internal server error", error: e });
+  }
+});
+
 
 export default router;

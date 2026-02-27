@@ -77,15 +77,16 @@ function Sidebar({ userData }) {
               </NavLink>
             </li>
 
-            <li>
+            {!isVictim ? <li>
               <NavLink
-                to={isVictim ? "/victim/dashboard/requests" : "/donor/dashboard/requests"}
+                to={"/donor/dashboard/in-progress"}
+                end
                 onClick={closeMenu}
               >
-                <i className="bi bi-clock-history"></i>
-                <span>Requests History</span>
+                <i className="bi bi-house-door"></i>
+                <span>In Progress</span>
               </NavLink>
-            </li>
+            </li> : ""}
 
             <li>
               <NavLink
@@ -94,6 +95,16 @@ function Sidebar({ userData }) {
               >
                 <i className="bi bi-person-circle"></i>
                 <span>Personal Info</span>
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to={isVictim ? "/victim/dashboard/requests" : "/donor/dashboard/requests"}
+                onClick={closeMenu}
+              >
+                <i className="bi bi-clock-history"></i>
+                <span>Requests History</span>
               </NavLink>
             </li>
 

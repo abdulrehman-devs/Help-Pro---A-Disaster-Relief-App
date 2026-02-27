@@ -1,4 +1,4 @@
-import mongoose, { trusted } from "mongoose";
+import mongoose from "mongoose";
 import Users from '../models/user.js';
 
 const requestSchema = new mongoose.Schema(
@@ -56,12 +56,18 @@ const requestSchema = new mongoose.Schema(
       enum: [
         "Pending",
         "Accepted",
-        "Completed",
+        "Fulfilled",
         "Rejected",
         "Cancelled"
       ],
       default: "Pending"
-    }
+    },
+
+    otp: {
+      type: String,
+    },
+
+    otpExpires: {type: Date}
 
   },
 
