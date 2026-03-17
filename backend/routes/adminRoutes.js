@@ -77,9 +77,7 @@ router.get("/requests", protect, async (req, res) => {
 
     try {
 
-        const requests = await Request.find({
-            status: { $in: ["Pending", "Accepted"] }
-        }).populate('donor', 'phone');
+        const requests = await Request.find().populate('donor', 'name phone');
 
         const totalRequests = await Request.countDocuments();
 

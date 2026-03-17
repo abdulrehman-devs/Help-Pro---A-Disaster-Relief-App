@@ -38,8 +38,8 @@ const Requests = () => {
                                 <td>{req.name || "N/A"}</td>
                                 <td>{req.phone || "N/A"}</td>
                                 <td>{req.city || "N/A"}</td>
-                                <td>{req.donor ? req.donor : "Not assigned"}</td>
-                                <td>{req.donor?.name || "N/A"}</td>
+                                <td>{req.donor?.name || "Not assigned"}</td>
+                                <td>{req.donor?.phone || "N/A"}</td>
                                 <td>{req.status}</td>
                             </tr>
                         )) : (

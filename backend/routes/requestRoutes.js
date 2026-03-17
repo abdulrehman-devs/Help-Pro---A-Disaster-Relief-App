@@ -207,7 +207,7 @@ router.patch("/donor/:id", protect, authorizeRoles("donor"), async (req, res) =>
   try {
     const request = await Request.findByIdAndUpdate(
       requestId,
-      { $set: { donor: donorId, status: "Pending" } },
+      { $set: { donor: donorId, status: "Accepted" } },
       { new: true }
     );
 

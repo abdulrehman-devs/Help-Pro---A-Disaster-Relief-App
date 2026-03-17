@@ -46,7 +46,7 @@ export default function VictimHome() {
       setStats([
         { icon: "bi-gift", label: "Total Requests", value: res.data.totalCount || 0, color: "green" },
         { icon: "bi-people", label: "Completed Requests", value: res.data.fulfilledCount || 0, color: "blue" },
-        { icon: "bi-hourglass-split", label: "In Progress", value: res.data.pendingCount || 0, color: "orange" },
+        { icon: "bi-hourglass-split", label: "Accepted Requests", value: res.data.acceptedCount || 0, color: "orange" },
         { icon: "bi-hourglass-split", label: "Disputed Requests", value: res.data.disputedCount || 0, color: "blue" }
       ]);
       console.log(res.data)
@@ -161,7 +161,7 @@ export default function VictimHome() {
               btn.style.background = "#b2bec3";
               await handleSubmit(req._id);
               setAcceptedRequests(prev => new Set(prev).add(req._id));
-              markersLayer.current.removeLayer(marker); // remove marker
+              markersLayer.current.removeLayer(marker); 
             } catch (err) {
               console.error(err);
             }
