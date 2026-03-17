@@ -22,8 +22,14 @@ import DonorFeedback from "./pages/donor/Feedback";
 
 import ProtectedRoute from "./services/privateRoute";
 import PublicRoute from "./services/publicRoute";
+import PrivateAdmin from "./services/privateAdmin";
 
 import DashboardLayout from "./components/dashboardLayout";
+import AdminLayout from "./pages/admin/AdminLayout";
+
+import AdminHome from './pages/admin/Home';
+import Users from './pages/admin/Users';
+import Requests from './pages/admin/Requests';
 
 function App() {
   return (
@@ -52,7 +58,13 @@ function App() {
             <Route path="/donor/dashboard/feedback" element={<DonorFeedback />} />
           </Route>
         </Route>
-        
+
+        <Route element={<AdminLayout />} >
+          <Route path="/admin-dashboard" element={<PrivateAdmin> <AdminHome /> </PrivateAdmin>} />
+          <Route path="/admin-dashboard/users" element={<PrivateAdmin> <Users /> </PrivateAdmin>} />
+          <Route path="/admin-dashboard/users/requests" element={<PrivateAdmin> <Requests /> </PrivateAdmin>} />
+        </Route>
+
       </Routes>
     </BrowserRouter>
   );

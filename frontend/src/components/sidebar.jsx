@@ -63,7 +63,6 @@ function Sidebar({ userData }) {
           <p className="sidebar-subtitle">Relief Management System</p>
         </div>
 
-        {/* Navigation Links */}
         <nav className="sidebar-nav">
           <ul>
             <li>

@@ -2,6 +2,9 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
 import Admin from '../models/admin.js';
+import Request from '../models/requests.js';
+import Users from '../models/user.js';
+import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
@@ -67,6 +70,75 @@ router.post('/signin', async (req, res) => {
     } catch (e) {
         console.error(e);
         return res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+router.get("/requests", protect, async (req, res) => {
+
+    try {
+
+        const requests = await Request.find({
+            status: { $in: ["Pending", "Accepted"] }
+        }).populate('donor', 'phone');
+
+        const totalRequests = await Request.countDocuments();
+
+        const activeRequests = await Request.countDocuments({
+            status: "Accepted"
+        });
+
+        const completedRequests = await Request.countDocuments({
+            status: "Completed"
+        });
+
+        const pendingRequests = await Request.countDocuments({
+            status: "Pending"
+        });
+
+        res.status(200).json({
+            totalRequests,
+            activeRequests,
+            pendingRequests,
+            requests
+        });
+
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server Error" });
+    }
+});
+
+router.get("/users", protect, async (req, res) => {
+
+    try {
+
+        const users = await Users.find()
+            .select("-password");
+
+        const totalUsers = await Users.countDocuments();
+
+        const totalDonors = await Users.countDocuments({
+            role: "donor"
+        });
+
+        const totalVictims = await Users.countDocuments({
+            role: "victim"
+        });
+
+        res.status(200).json({
+            totalUsers,
+            totalDonors,
+            totalVictims,
+            users
+        });
+
+    }
+    catch (error) {
+
+        console.error(error);
+        res.status(500).json({ message: "Server Error" });
+
     }
 });
 

@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import Sidebar from "../../components/sidebar";
-import { useOutletContext } from "react-router-dom";
 
 const activities = [
   { text: "Fulfilled food supply request REQ-1001 for Victim #245", time: "2 hour ago", color: "green" },
@@ -14,7 +12,6 @@ const activities = [
 ];
 
 export default function VictimHome() {
-  const { userData } = useOutletContext();
 
   const [requests, setRequests] = useState([]);
   const [stats, setStats] = useState([]);
@@ -127,7 +124,6 @@ export default function VictimHome() {
         }),
       });
 
-      // Popup content
       marker.bindPopup(`
       <div style="font-family:'Segoe UI',sans-serif;width:230px;padding:12px;word-wrap:break-word;overflow-wrap:break-word;">
         <div style="font-weight:700;font-size:0.95rem;margin-bottom:8px;color:#d63031;">
@@ -179,7 +175,6 @@ export default function VictimHome() {
 
   return (
     <div>
-      <Sidebar userData={userData} />
       <div className="page-title-bar">
         <div>
           <h1>Dashboard Overview | Donor</h1>
