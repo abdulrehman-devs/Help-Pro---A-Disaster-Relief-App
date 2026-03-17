@@ -16,7 +16,7 @@ const InProgress = () => {
 
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/requests/donor?type=Accepted",
+        "http://localhost:5000/api/requests/donor?type=Pending",
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setRequests(res.data);
@@ -35,7 +35,7 @@ const InProgress = () => {
     try {
       const res = await axios.post(
         `http://localhost:5000/api/requests/donor/send-otp/${requestId}`,
-        {}, // empty body
+        {}, 
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -105,14 +105,13 @@ const InProgress = () => {
               boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
             }}
           >
-            <p><strong>Type:</strong> {req.deliverytype || ""}</p>
+            <p><strong>Type:</strong> {req.deliveryType || ""}</p>
             <p><strong>Description:</strong> {req.description || ""}</p>
             <p><strong>Phone:</strong> {req.victim?.phone}</p>
             <p><strong>Victim:</strong> {req.victim?.name}</p>
             <p><strong>City:</strong> {req.victim?.city}</p>
             <p><strong>Address:</strong> {req.victim?.address}</p>
 
-            {/* Show Send OTP button if OTP field is not visible */}
             {!showOtpField[req._id] ? (
               <button
                 onClick={() => handleSendOtp(req._id)}

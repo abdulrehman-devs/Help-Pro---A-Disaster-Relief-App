@@ -4,7 +4,7 @@ import { signup } from '../services/authService';
 
 const Signup = () => {
     const [response, setResponse] = useState("");
-
+ 
     const handleSubmit = async (formData) => {
         try {
             const res = await signup(formData);

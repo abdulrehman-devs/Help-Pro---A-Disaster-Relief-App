@@ -14,13 +14,12 @@ const AdminSignin = () => {
             setResponse(res.data.message);
             localStorage.setItem("adminToken", res.data.adminToken)
             navigate("/admin-dashboard");
-            
         }
         catch (e) {
             console.log("Internal server error", e);
         }
     } 
-    
+     
     return (
         <div>
             <AuthForm admin='true' onSubmit={handleSubmit} response={response}/>

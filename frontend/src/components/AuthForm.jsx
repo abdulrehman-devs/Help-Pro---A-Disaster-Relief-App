@@ -67,7 +67,7 @@ const AuthForm = ({ onSubmit, admin, response }) => {
     const { name, value } = e.target;
 
     const newValue =
-      name !== "email" && name !== "role"
+      name !== "email" && name !== "role" && name !== "password"
         ? value
           .split(" ")
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -78,13 +78,13 @@ const AuthForm = ({ onSubmit, admin, response }) => {
     setError("");
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
     if (!validateForm()) return;
 
-    const success = await onSubmit(formData);
-    if (success) {
-      setFormData({ name: "", email: "", password: "", phone: "", role: "" });
-    }
+    await onSubmit(formData);
+
+    setFormData({ name: "", email: "", password: "", phone: "", role: "" });
   };
 
   return (

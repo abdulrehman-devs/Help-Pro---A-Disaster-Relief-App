@@ -151,24 +151,26 @@ export default function VictimRequestsHistory() {
                     </div>
                   )}
                 </td>
-                <td><button style={{
-                  color: "#fff",
-                  backgroundColor: "#e74c3c",
-                  border: "none",
-                  padding: "6px 12px",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  fontWeight: "bold",
-                  transition: "background-color 0.2s ease",
-                }}
-                  onMouseEnter={e => e.currentTarget.style.backgroundColor = "#c0392b"}
-                  onMouseLeave={e => e.currentTarget.style.backgroundColor = "#e74c3c"} onClick={() => handleDelete(req._id)}>
-                  {
-                    req.role === "Donor" && req.status === "Accepted" ?
-                      "Cancel Request" :
-                      "Delete"
-                  }
-                </button>
+                <td>
+                  {(req.status === "Pending" || req.status === "Accepted") && (
+                    <button
+                      style={{
+                        color: "#fff",
+                        backgroundColor: "#e74c3c",
+                        border: "none",
+                        padding: "6px 12px",
+                        borderRadius: "4px",
+                        cursor: "pointer",
+                        fontWeight: "bold",
+                        transition: "background-color 0.2s ease",
+                      }}
+                      onMouseEnter={e => e.currentTarget.style.backgroundColor = "#c0392b"}
+                      onMouseLeave={e => e.currentTarget.style.backgroundColor = "#e74c3c"}
+                      onClick={() => handleDelete(req._id)}
+                    >
+                      {req.role === "Donor" && req.status === "Accepted" ? "Cancel Request" : "Delete"}
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}
