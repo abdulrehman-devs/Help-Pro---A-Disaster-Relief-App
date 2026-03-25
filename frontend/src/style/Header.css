@@ -1,6 +1,8 @@
 .app-header {
-  background-color: #fefefe;
-  border-bottom: 1px solid #000000;
+  background: rgb(247, 247, 247);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(2, 6, 23, 0.08);
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.04);
 }
 
 .logo-box {
@@ -12,38 +14,53 @@
 }
 
 .navbar-brand {
-  margin-right: 300px;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .app-name {
-  font-size: 24px;
-  font-weight: 600;
-  color: #000000;
+  font-size: 22px;
+  font-weight: 850;
+  color: #0f172a;
 }
 
 .nav-link {
-  color: #000000;
-  font-size: 14px;
+  color: #0f172a;
+  font-size: 13px;
   margin-right: 0;
-  letter-spacing: 1px;
+  letter-spacing: 0.22px;
+  font-weight: 750;
+  text-transform: uppercase;
+  padding: 0 6px;
+  position: relative;
 }
 
 .nav-link:hover {
-  color: #e50000;
+  color: #16a34a;
+  box-shadow: inset 0 -2px 0 rgba(22, 163, 74, 0.85);
 }
 
-.container {
+.app-header .container {
   max-width: 100%;
-  margin: 0 30px 0 30px;
 }
 
-.btn {
-  color: #036fd4;
+.app-header .btn {
+  font-weight: 800;
 }
 
-.btn:hover {
-  color: rgb(236, 0, 0);
-  text-decoration: underline;
+.app-header .btn.btn-primary {
+  background-color: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 10px 18px;
+  margin: 0 !important;
+}
+
+.app-header .btn.btn-primary:hover {
+  background-color: #12803a;
+  border-color: #12803a;
+  color: #ffffff;
 }
 
 .btn-outline-primary:hover {
@@ -51,32 +68,42 @@
 }
 
 .login-btn {
-  color: #16A34A;
+  color: #16a34a;
   text-decoration: none;
   display: flex;
   align-items: center;
   margin-right: 20px;
-  font-weight: 600;
-  border: 1px solid #16A34A;
+  font-weight: 850;
+  border: 1px solid rgba(22, 163, 74, 0.65);
   border-radius: 40px;
-  padding: 12px 30px;
+  padding: 10px 22px;
 }
 
 .login-btn:hover {
   color: rgb(255, 255, 255);
-  background-color: #16A34A;
+  background-color: #16a34a;
   transition: 0.3s ease-in-out;
 }
 
 .nav-link {
-  font-weight: 530;
+  font-weight: 750;
 }
 
-
+.navbar-expand-lg .navbar-nav {
+  margin-left: 550px;
+}
 
 @media screen and (max-width: 600px) {
-  .container {
+  .app-header .container {
     margin: 0 !important;
+  }
+
+  .navbar-expand-lg .navbar-nav {
+    margin-left: 0px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin: 30px 0;
   }
 
   .steps-grid {

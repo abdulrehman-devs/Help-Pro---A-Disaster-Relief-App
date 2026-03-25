@@ -10,7 +10,7 @@ function Header({ isLoggedIn }) {
 
                     <Link className="navbar-brand d-flex align-items-center" to="/">
                         <img
-                            src="/helpro-logo.jpg"
+                            src="/helpro-logo.png"
                             alt="Help Pro Logo"
                             style={{ width: '50px', height: '50px', objectFit: 'contain' }}
                         />
@@ -29,15 +29,15 @@ function Header({ isLoggedIn }) {
                     <div className="collapse navbar-collapse" id="navbarMenu">
 
                         { !isLoggedIn &&
-                            <ul className="navbar-nav mx-auto align-items-lg-center">
+                            <ul className="navbar-nav">
                                 <li className="nav-item">
                                     <a className="nav-link" href="#features">FEATURES</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#how">HOW IT WORKS</a>
+                                    <a className="nav-link" href="#tech">TECHNOLOGY</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#tech">TECHNOLOGY</a>
+                                    <a className="nav-link" href="#faq">FAQs</a>
                                 </li>
                             </ul>}
 
