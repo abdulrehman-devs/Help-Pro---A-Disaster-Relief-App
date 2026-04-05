@@ -10,7 +10,8 @@ function LandingPage() {
             <Header isLoggedIn={false} />
 
             <main className="landing-main">
-                <section className="hero" aria-labelledby="landing-title">
+               
+            <section className="hero" aria-labelledby="landing-title">
                     <div className="container hero-container">
                         <div className="hero-content">
                             <span className="hero-badge">Real-time disaster relief coordination</span>
@@ -28,9 +29,9 @@ function LandingPage() {
 
                         </div>
                     </div>
-                </section>
+            </section>
 
-                <section className="section value-prop" aria-labelledby="value-title">
+            <section className="section value-prop" aria-labelledby="value-title">
                     <div className="container">
                         <div className="value-layout">
                             <div className="value-copy">
@@ -86,7 +87,7 @@ function LandingPage() {
                             </div>
                         </div>
                     </div>
-                </section>
+            </section>
 
             <section className="section features" id="features" aria-labelledby="features-title">
                 <div className="container">

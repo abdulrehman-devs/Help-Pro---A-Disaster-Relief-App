@@ -93,6 +93,12 @@
   margin-left: 550px;
 }
 
+@media screen and (max-width: 1300px) {
+  .navbar-expand-lg .navbar-nav {
+    margin-left: 300px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .app-header .container {
     margin: 0 !important;

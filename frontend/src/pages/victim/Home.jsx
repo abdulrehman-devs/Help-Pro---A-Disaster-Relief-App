@@ -221,8 +221,11 @@ export default function VictimHome() {
         </span>
       </div>
 
-      {requests.map((req) =>
-        req.status === "Accepted" && req.otp ? (
+      {requests.map((req) => {
+        const isOtpExpired = req.otp && req.otpExpires ? 
+          Date.now() > new Date(req.otpExpires).getTime() : true;
+        
+        return req.status === "Accepted" && req.otp && !isOtpExpired ? (
           <div
             key={req._id}
             style={{
@@ -248,8 +251,8 @@ export default function VictimHome() {
               Status: {req.status}
             </div>
           </div>
-        ) : null
-      )}
+        ) : null;
+      })}
 
       <div className="request-banner" onClick={openModal}>
         <div className="request-banner-icon">
