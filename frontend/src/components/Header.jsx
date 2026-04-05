@@ -39,7 +39,8 @@ function Header({ isLoggedIn }) {
                                 <li className="nav-item">
                                     <a className="nav-link" href="#faq">FAQs</a>
                                 </li>
-                            </ul>}
+                            </ul>
+                        }
 
                         <div className="d-flex ms-auto gap-1">
                             { !isLoggedIn ? 

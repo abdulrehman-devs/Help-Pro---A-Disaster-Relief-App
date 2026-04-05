@@ -95,6 +95,8 @@ export default function VictimHome() {
 
     if (!requests || requests.length === 0) return;
 
+    const bounds = [];
+
     requests.forEach((req) => {
       const coords = req?.location?.coordinates;
       if (!coords || coords.length < 2) return;
@@ -102,6 +104,8 @@ export default function VictimHome() {
       const [lng, lat] = coords;
 
       if (acceptedRequests.has(req._id)) return;
+
+      bounds.push([lat, lng]);
 
       const marker = L.marker([lat, lng], {
         icon: L.divIcon({
@@ -171,7 +175,11 @@ export default function VictimHome() {
 
       markersLayer.current.addLayer(marker);
     });
-  });
+
+    if (bounds.length > 0) {
+      leafletMap.current.fitBounds(bounds, { padding: [40, 40] });
+    }
+  }, [requests, acceptedRequests]);
 
   return (
     <div>

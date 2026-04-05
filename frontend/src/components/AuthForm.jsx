@@ -88,7 +88,7 @@ const AuthForm = ({ onSubmit, admin, response }) => {
   };
 
   return (
-    <div className="auth-wrapper">
+    <div className={`auth-wrapper ${isAdmin ? 'admin' : ''}`}>
       <div className="auth-container">
         {isSignin ? (
           <>
