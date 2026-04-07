@@ -5,64 +5,41 @@ import Sidebar from '../components/sidebar';
 import { useOutletContext } from "react-router-dom";
 
 export default function VictimRequestsHistory() {
-
   const [role, setRole] = useState("");
   const [requests, setRequests] = useState([]);
   const [hoveredId, setHoveredId] = useState(null);
   const [hoverData, setHoverData] = useState(null);
 
   const { userData } = useOutletContext();
+  const currentRole = localStorage.getItem("role");
 
   const fetchRequestsHistory = async () => {
     try {
       const token = localStorage.getItem("token");
-      const storedRole = localStorage.getItem("role");
 
-      const url =
-        storedRole === "donor"
-          ? `http://localhost:5000/api/requests/${storedRole}?type=Accepted,Fulfilled`
-          : `http://localhost:5000/api/requests/${storedRole}`;
+      const url = currentRole === "donor"
+        ? `http://localhost:5000/api/requests/donor?type=Accepted,Fulfilled`
+        : `http://localhost:5000/api/requests/victim`;
 
-      const res = await axios.get(
-        url,
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      );
+      const res = await axios.get(url, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
 
       setRequests(res.data.activeRequests || res.data || []);
-      console.log(res.data)
-
-    }
-    catch (e) {
+    } catch (e) {
       console.log("Error:", e.response?.data?.message || e.message);
     }
   };
 
   useEffect(() => {
+    setRole(currentRole);
     fetchRequestsHistory();
-  }, []);
-
-  const checkRole = () => {
-    const role = localStorage.getItem("role");
-
-    if (role === "victim") {
-      setRole("donor")
-    }
-    else {
-      setRole("victim")
-    }
-  }
-
-  useEffect(() => {
-    checkRole();
-  }, []);
+  }, [currentRole]);
 
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      const role = localStorage.getItem("role");
-      await axios.delete(`http://localhost:5000/api/requests/${role}/delete/${id}`, {
+      await axios.delete(`http://localhost:5000/api/requests/${currentRole}/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setRequests(requests.filter(req => req._id !== id));

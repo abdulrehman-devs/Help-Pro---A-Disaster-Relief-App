@@ -31,10 +31,10 @@ router.get("/user", protect, async (req, res) => {
     const userFeedbacks = await Feedback.find({ userId });
 
     if (!userFeedbacks || userFeedbacks.length === 0) {
-      res.status(409).json({ message: "No Feedbacks Currently!" })
+      return res.status(404).json({ message: "No feedbacks found", userFeedbacks: [] });
     }
 
-    res.status(201).json({ message: "Feedbacks Sent!", userFeedbacks })
+    res.status(200).json({ message: "Feedbacks retrieved successfully", userFeedbacks });
   }
   catch (e) {
     res.status(500).json({ message: "Internal Server Error", e });
@@ -50,10 +50,10 @@ router.get("/", protect, async (req, res) => {
     );
 
     if (!allFeedbacks || allFeedbacks.length === 0) {
-      return res.status(404).json({ message: "No Feedbacks Currently!" });
+      return res.status(200).json({ message: "No feedbacks found", allFeedbacks: [] });
     }
 
-    res.status(200).json({ message: "All Feedbacks Sent!", allFeedbacks });
+    res.status(200).json({ message: "All feedbacks retrieved successfully", allFeedbacks });
   } catch (e) {
     console.error(e);
     res.status(500).json({ message: "Internal Server Error", error: e.message });

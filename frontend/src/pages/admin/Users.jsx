@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 
 const Users = () => {
     const { usersData = {} } = useOutletContext();
     const users = usersData.users || [];
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const filteredUsers = users.filter(user => 
+        user.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        user.email?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return (
         <div className="page-wrapper" style={{marginTop: "100px", width: "90vw", marginLeft: "50px"}}>
@@ -12,6 +18,19 @@ const Users = () => {
                     <h1>Users</h1>
                     <span className="breadcrumb-text">
                         <i className="bi bi-house-door me-1"></i> Home &gt; Users
+                    </span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                    <input 
+                        type="text" 
+                        className="form-control" 
+                        placeholder="Search users by email or name..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        style={{ width: '250px', padding: '8px 12px' }}
+                    />
+                    <span className="breadcrumb-text">
+                        Found: {filteredUsers.length} users
                     </span>
                 </div>
             </div>
@@ -30,8 +49,8 @@ const Users = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.length > 0 ? users.map((user, i) => (
-                            <tr key={i}>
+                        {filteredUsers.length > 0 ? filteredUsers.map((user, i) => (
+                            <tr key={user._id}>
                                 <td style={{ fontWeight: "700" }}>{user._id}</td>
                                 <td>{user.name || "N/A"}</td>
                                 <td>{user.email || "N/A"}</td>
@@ -52,6 +71,6 @@ const Users = () => {
             </div>
         </div>
     );
-}
+};
 
 export default Users;
