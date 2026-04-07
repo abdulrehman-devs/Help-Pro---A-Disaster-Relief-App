@@ -38,6 +38,11 @@ const requestSchema = new mongoose.Schema(
       trim: true
     },
 
+    victimCity: {
+      type: String,
+      required: true
+    },
+
     location: {
       type: {
         type: String,
@@ -63,11 +68,16 @@ const requestSchema = new mongoose.Schema(
       default: "Pending"
     },
 
+    embedding: {
+      type: [Number],
+      default: []
+    },
+
     otp: {
       type: String,
     },
 
-    otpExpires: {type: Date}
+    otpExpires: { type: Date }
 
   },
 

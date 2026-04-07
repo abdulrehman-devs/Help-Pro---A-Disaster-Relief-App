@@ -35,7 +35,7 @@ export default function VictimFeedback() {
     }
 
     fetchRecentFeedbacks();
-  }, [recentFeedbacks])
+  }, []); // Empty dependency - only run once on mount
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

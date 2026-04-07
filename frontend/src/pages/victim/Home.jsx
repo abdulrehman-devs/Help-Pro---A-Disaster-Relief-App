@@ -27,6 +27,7 @@ export default function VictimHome() {
   const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [requests, setRequests] = useState([]);
   const [stats, setStats] = useState([]);
   const [message, setMessage] = useState("");
@@ -74,6 +75,7 @@ export default function VictimHome() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       const token = localStorage.getItem("token");
       const requestData = {
@@ -102,7 +104,8 @@ export default function VictimHome() {
     } catch (e) {
       console.error("Error submitting request:", e.response?.data?.message || e.message);
       setMessage(e.response?.data?.message || "Failed to make a request.");
-      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -222,9 +225,9 @@ export default function VictimHome() {
       </div>
 
       {requests.map((req) => {
-        const isOtpExpired = req.otp && req.otpExpires ? 
+        const isOtpExpired = req.otp && req.otpExpires ?
           Date.now() > new Date(req.otpExpires).getTime() : true;
-        
+
         return req.status === "Accepted" && req.otp && !isOtpExpired ? (
           <div
             key={req._id}
@@ -419,9 +422,18 @@ export default function VictimHome() {
                     <button type="button" className="btn-secondary-custom" onClick={closeModal}>
                       Cancel
                     </button>
-                    <button type="submit" className="btn-primary-custom" disabled={!canSubmit}>
-                      <i className="bi bi-send me-2"></i>
-                      Submit Request
+                    <button type="submit" className="btn-primary-custom" disabled={!canSubmit || isSubmitting}>
+                      {isSubmitting ? (
+                        <>
+                          <i className="bi bi-hourglass-split me-2"></i>
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          <i className="bi bi-send me-2"></i>
+                          Submit Request
+                        </>
+                      )}
                     </button>
                   </div>
                 </form>

@@ -3,6 +3,8 @@ import Request from "../models/requests.js";
 import Users from "../models/user.js";
 import { protect } from "../middleware/authMiddleware.js";
 import { authorizeRoles } from "../middleware/roleMiddleware.js";
+import getCityFromCoords from "../services/locationService.js";
+import { getEmbedding } from "../services/embeddingService.js"; 
 import mongoose from "mongoose";
 
 const router = express.Router();
@@ -16,6 +18,7 @@ router.post("/", protect, authorizeRoles("victim"), async (req, res) => {
     }
 
     const victimId = new mongoose.Types.ObjectId(req.user.id);
+    const victimCity = await getCityFromCoords(location.coordinates[1], location.coordinates[0]);
 
     const activeRequests = await Request.countDocuments({
       victim: victimId,
@@ -29,24 +32,28 @@ router.post("/", protect, authorizeRoles("victim"), async (req, res) => {
     const victimExists = await Users.findById(victimId);
     if (!victimExists) return res.status(400).json({ message: "Invalid victim ID." });
 
+    
+    const embedding = await getEmbedding(deliveryType, victimCity);
+
     const newRequest = new Request({
       deliveryType,
       description,
       location,
       victim: victimId,
+      victimCity: victimCity,
       name: req.user.name,
       phone: req.user.phone,
-      status: "Pending"
+      status: "Pending",
+      embedding 
     });
 
     const savedRequest = await newRequest.save();
-
-    console.log("Saved request:", savedRequest);
+    console.log("Saved request with embedding:", savedRequest);
 
     res.status(201).json({ message: "Request submitted", savedRequest });
-  }
-  catch (err) {
-    console.error(err);
+
+  } catch (err) {
+    console.error("Request creation error:", err);
     res.status(500).json({ message: "Server error" });
   }
 });
@@ -298,6 +305,5 @@ router.post("/donor/verify-otp/:id", protect, authorizeRoles("donor"), async (re
     return res.status(500).json({ success: false, message: "Internal server error", error: e });
   }
 });
-
 
 export default router;

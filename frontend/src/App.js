@@ -30,6 +30,7 @@ import AdminLayout from "./pages/admin/AdminLayout";
 import AdminHome from './pages/admin/Home';
 import Users from './pages/admin/Users';
 import Requests from './pages/admin/Requests';
+import UserFeedbacks from './pages/admin/UserFeedbacks';
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
           <Route path="/admin-dashboard" element={<PrivateAdmin> <AdminHome /> </PrivateAdmin>} />
           <Route path="/admin-dashboard/users" element={<PrivateAdmin> <Users /> </PrivateAdmin>} />
           <Route path="/admin-dashboard/users/requests" element={<PrivateAdmin> <Requests /> </PrivateAdmin>} />
+          <Route path="/admin-dashboard/user-feedbacks" element={<PrivateAdmin> <UserFeedbacks /> </PrivateAdmin>} />
         </Route>
 
       </Routes>

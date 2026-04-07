@@ -30,6 +30,10 @@ const Navbar = () => {
           <li>
             <NavLink to="/admin-dashboard/users/requests" className={({ isActive }) => isActive ? "active" : "" }>Requests</NavLink>
           </li>
+
+          <li>
+            <NavLink to="/admin-dashboard/user-feedbacks" className={({ isActive }) => isActive ? "active" : "" }>User Feedbacks</NavLink>
+          </li>
         </ul>
 
         <button className="logout-btn" onClick={handleLogout}>

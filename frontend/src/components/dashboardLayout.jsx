@@ -22,7 +22,7 @@ export default function DashboardLayout() {
         console.log("Error fetching user", e);
       }
     };
-
+ 
     fetchUserData();
   }, []);
 

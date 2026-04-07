@@ -86,7 +86,7 @@ router.get("/requests", protect, async (req, res) => {
         });
 
         const completedRequests = await Request.countDocuments({
-            status: "Completed"
+            status: "Fulfilled"
         });
 
         const pendingRequests = await Request.countDocuments({
@@ -97,6 +97,7 @@ router.get("/requests", protect, async (req, res) => {
             totalRequests,
             activeRequests,
             pendingRequests,
+            completedRequests,
             requests
         });
 
