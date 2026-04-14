@@ -89,6 +89,9 @@ const AuthForm = ({ onSubmit, admin, response }) => {
 
   return (
     <div className={`auth-wrapper ${isAdmin ? 'admin' : ''}`}>
+      <div className="auth-header" onClick={() => navigate('/')}>
+        <h1 className="auth-logo">Help Pro</h1>
+      </div>
       <div className="auth-container">
         {isSignin ? (
           <>

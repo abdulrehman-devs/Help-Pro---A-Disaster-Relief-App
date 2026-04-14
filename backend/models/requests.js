@@ -68,9 +68,8 @@ const requestSchema = new mongoose.Schema(
       default: "Pending"
     },
 
-    embedding: {
-      type: [Number],
-      default: []
+    query: {
+      type: String,
     },
 
     otp: {

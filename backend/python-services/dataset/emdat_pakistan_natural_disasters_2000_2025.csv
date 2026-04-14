@@ -1,0 +1,174 @@
+Disaster_ID,Disaster_Type,Disaster_Subtype,Location,Start_Year,Start_Month,End_Year,Total_Deaths,Injured,Total_Affected,Total_Damage_USD_000,Country 
+2022-0405-PAK,Flood,Flood (General),"Lasbela, Jhal Magsi, Killa Saifullah, Pishin, Noshki, Kachhi, Khuzdar, Kalat and Chaman districts (Balochistan); Khyber Pakhtunkhwa, Sindh, Punjab, Azad Jammu, Gilgit Baltistan and Kashmir provinces",2022,6,2022,1739,12865,33012865,15000000,pakistan
+2000-0119-PAK,Epidemic,Infectious disease (General),"Tharparkar, Sindh Province",2000,3,2000,95,,,,pakistan
+2000-0307-PAK,Epidemic,Infectious disease (General),Punjab province,2000,6,2000,4,,246,,pakistan
+2000-0675-PAK,Epidemic,Viral disease,Loralai district (Baluchistan province),2000,9,2000,10,,12,,pakistan
+2001-0033-PAK,Earthquake,Ground movement,"Badin District, Tharparkar District, Mirpur Khas District districts (Sindh province)",2001,1,2001,12,100,914292,500,pakistan
+2001-0267-PAK,Storm,Tornado,"Chak Miran borough (Lahore City Tehsil area, Lahore District district, Punjab province)",2001,3,2001,4,,500,,pakistan
+2001-0328-PAK,Mass movement (wet),Landslide (wet),"Chitta Katha village (Mansehra District district, North-West Frontier province)",2001,7,2001,15,,,,pakistan
+2016-0100-PAK,Earthquake,Ground movement,"North-West Frontier, Gilgit-Baltistan provinces, Khyber Agency district (Federally Administered Tribal Areas province)",2016,4,2016,6,42,142,,pakistan
+2001-0727-PAK,Epidemic,Parasitic disease,"Sindh, Northerwest Frontier provinces",2001,11,2002,,,5000,,pakistan
+2001-0766-PAK,Mass movement (wet),Mudslide,"Karachi city (Karachi South District district, Sindh province), Hyderabad city (Hyderabad District district, Sindh province), Sukkur city (Sukkur District district, Sindh province)",2001,7,2001,16,12,12,,pakistan
+2002-0122-PAK,Earthquake,Ground movement,Bajaur Agency district (Federally Administered Tribal Areas province),2002,3,2002,3,,,,pakistan
+2019-0460-PAK,Earthquake,Ground movement,Mirpur district (Southern Azad Jammu and Kashmir Territory),2019,9,2019,39,746,130398,17000,pakistan
+2002-0302-PAK,Epidemic,Infectious disease (General),"Malik, Moro",2002,,2002,10,,25,,pakistan
+2002-0509-PAK,Flood,Flash flood,Peshawar district (Nort-West Frontier province),2002,8,2002,14,,,,pakistan
+2002-0543-PAK,Flood,Riverine flood,"Mardan, Malakand Protected Area, Swabi, Swat districts (North-West Frontier province)",2002,8,2002,22,10,3010,30,pakistan
+2019-0155-PAK,Storm,Storm (General),"Federally Administered Tribal Areas (FATA), Balochistan and Punjab",2019,4,2019,39,135,135,,pakistan
+2002-0628-PAK,Flood,Flood (General),"Sodi Jey Wali, Khorah Trapri, Ahmadabad villages (Soon Sakesar valley, Khushab district, Punjab province)",2002,9,2002,1,,1000,,pakistan
+2002-0692-PAK,Earthquake,Ground movement,Administrative unit not available district (Jammu and Kashmir province),2002,11,2002,17,65,15065,,pakistan
+2002-0721-PAK,Earthquake,Ground movement,Administrative unit not available district (Jammu and Kashmir province),2002,11,2002,19,40,140782,,pakistan
+2022-0342-PAK,Earthquake,Ground movement,Lakki Marwat District (southern Khyber Pakhtunkhwa),2022,6,2022,43,,,,pakistan
+2003-0681-PAK,Flood,Flash flood,"Warri, Barkand, Gandi Gari villages (Upper Dir district, North-West Frontier province)",2003,9,2003,36,20,20,,pakistan
+2025-0576-PAK,Flood,Flood (General),Pendjab province,2025,7,2025,63,290,290,,pakistan
+2025-0596-PAK,Flood,Flood (General),"Islamabad, Gilgit-Baltistan and Khyber Pakhtunkhwa",2025,7,2025,18,4,254,,pakistan
+2004-0725-PAK,Epidemic,Infectious disease (General),Goth Nek Mohammed (Karachi),2004,10,2004,2,100,100,,pakistan
+2004-0734-PAK,Flood,Riverine flood,"Pasrur Tehsil area (Sialkot district, Punjab province)",2004,8,2004,,,,,pakistan
+2005-0044-PAK,Storm,Storm (General),"Lwargi village (Datta Khel Tehsil area, North Waziristan Agency district, Federally Administered Tribal Areas province)",2005,1,2005,58,,,,pakistan
+2005-0170-PAK,Flood,Riverine flood,"Gwadar, Killa Abdullah, Kech districts (Balochistan province)",2005,3,2005,15,,5000,,pakistan
+2005-0634-PAK,Epidemic,Bacterial disease,Kasmir,2005,10,2005,22,111,111,,pakistan
+2005-0722-PAK,Epidemic,Infectious disease (General),Cachemire,2005,12,2005,20,,,,pakistan
+2006-0345-PAK,Mass movement (wet),Landslide (wet),"Ghaeel village (Kalam area, Swat District district, North-West Frontier province)",2006,7,2006,29,5,5,,pakistan
+2006-0365-PAK,Flood,Riverine flood,"Govek, Faqir, Api villages (North Waziristan Agency district, Federally Administered Tribal Areas province)",2006,7,2006,13,300,300,,pakistan
+2007-0007-PAK,Mass movement (wet),Landslide (wet),Administrative unit not available district (Jammu and Kashmir province),2007,1,2007,20,,2,,pakistan
+2007-0093-PAK,Mass movement (wet),Landslide (wet),"Administrative unit not available district (Jammu and Kashmir province), Lower Dir District, Upper Dir District districts (North-West Frontier province)",2007,3,2007,80,,,,pakistan
+2007-0241-PAK,Flood,Riverine flood,"Landi Kotal, Jamrud villages (Peshawar district, North-West Frontier province), Chrasadda, Kohistan, Upper Dir districts (North-West Frontier province), Khyber Agency district (Federally Administered Tribal Areas province)",2007,6,2007,130,,2000,,pakistan
+2007-0255-PAK,Flood,Flash flood,"Baidara, Barinjal villages (Swat district, North-West Frontier province)",2007,6,2007,22,,500,,pakistan
+2007-0284-PAK,Flood,Flood (General),"Oshai Darray village (Upper Dir district, North -West Frontier province)",2007,7,2007,80,,,,pakistan
+2008-0208-PAK,Flood,Riverine flood,"Madyan village (Swat district, North-West Frontier province)",2008,5,2008,10,,,,pakistan
+2008-0500-PAK,Earthquake,Ground movement,"Khanozai village (Pishin District district, Balochistan province), Kawas village (Ziarat District district, Balochistan province), Harnai area (Sibi District district, Balochistan province)",2008,10,2008,166,320,75320,10000,pakistan
+2010-0012-PAK,Mass movement (wet),Landslide (wet),Administrative unit not available district (Jammu and Kashmir province),2010,1,2010,19,,26700,18000,pakistan
+2010-0293-PAK,Flood,Flash flood,Barkhan district (Balochistan province),2010,7,2010,60,,4000,,pakistan
+2011-0104-PAK,Earthquake,Ground movement,"Garhi Khairo village (Jacobabad district, Sindh province), Quetta, Chagai districts (Balochistan province)",2011,1,2011,2,,1000,,pakistan
+2012-0084-PAK,Mass movement (wet),Avalanche (wet),Administrative unit not available district (Jammu and Kashmir province),2012,4,2012,135,,,,pakistan
+2013-0484-PAK,Earthquake,Ground movement,Awaran District district (Balochistan province),2013,9,2013,22,50,50,,pakistan
+2014-0322-PAK,Storm,Lightning/Thunderstorms,Peshawar district (North-West Frontier province),2014,8,2014,16,82,82,,pakistan
+2015-0145-PAK,Flood,Flash flood,"Peshawar district, North-West Frontier province",2015,4,2015,49,267,5067,1000,pakistan
+2015-0215-PAK,Flood,Flash flood,Khuzdar district (Balochistan province),2015,6,2015,20,,,,pakistan
+2015-0454-PAK,Mass movement (dry),Rockfall (dry),"Gulistane Jauhar area (Karachi East District district, Sindh province)",2015,10,2015,13,,,,pakistan
+2015-0571-PAK,Earthquake,Ground movement,Khyber Agency district (Federally Administrered Tribal Areas province),2015,12,2015,3,85,85,,pakistan
+2016-0229-PAK,Storm,Lightning/Thunderstorms,"Federally Administered Tribal Areas, Punjab, Azad Jammu and Kashmir provinces; Islamabad, Rawalpindi, Khyber Pakhtunkawa",2016,6,2016,34,191,191,,pakistan
+2016-0270-PAK,Flood,Flood (General),Khyber Agency district (Federally Administered Tribal Areas province),2016,7,2016,26,3,3,,pakistan
+2017-0045-PAK,Flood,Flood (General),"Turbat (Kech); Gwadar, Panjgur, Pishin, Ziarat, Qila Abdullah districts (Balochistan province)",2017,1,2017,13,650,60650,,pakistan
+2017-0181-PAK,Storm,Lightning/Thunderstorms,"Lahore, Faisalabad, Sialkot, Gujranwala, Kasur, Bahawalnagar, Multan, Chichawatni (Sahiwal), Lodhran, Rajanpur, Sheikupura, Nankana Sahib (Sheikupura) (Punjab)",2017,6,2017,15,113,113,,pakistan
+2017-0385-PAK,Epidemic,Viral disease,Khyber Pakhtunkhwa,2017,8,2017,25,2492,2492,,pakistan
+2007-0128-PAK,Mass movement (wet),Avalanche (wet),Chitral District district (North-West Frontier province),2007,3,2007,43,3,3,,pakistan
+2018-0212-PAK,Flood,Flood (General),,2018,5,2018,60,,5000,,pakistan
+2019-0082-PAK,Flood,Flood (General),Khyber Pakhtunkhwa province; Lasbellla district (Balochistan Province),2019,2,2019,25,22,22,,pakistan
+2019-0471-PAK,Flood,Flood (General),"Mardan, Dir Lower districts (Khyber Pakhtunkhwa province)",2019,9,2019,11,,,,pakistan
+2019-0659-PAK,Epidemic,Viral disease,"Islamabad, Punjab, Sindh, Khyber-Pakhtunkhwa, KP Tribal districts, Baluchistan, AJK, Gilgit Baltistan",2019,1,2020,95,53834,53834,,pakistan
+2020-0130-PAK,Infestation,Locust infestation,"Blochistan, Punjab, Sindh, Khyber Pakhtunkhwa Provinces",2020,1,2020,,,,,pakistan
+2020-0249-PAK,Flood,Flood (General),"Bajaur, Buner districts (Khyber Pakhtunkhwa Province)",2020,6,2020,7,,5000,,pakistan
+2020-0457-PAK,Mass movement (wet),Landslide (wet),"Tangus Village area, Gilgit-Baltistan Region",2020,10,2020,16,,,,pakistan
+2021-0342-PAK,Storm,Severe weather,"Okara, Toba Tek Singh Districts (Punjab province)",2021,5,2021,12,6,6,,pakistan
+2021-0429-PAK,Storm,Severe weather,"Kohat, Lower Dir, Karak District, Kurram , Shangla Districts (Khyber Pakhtunkhwa Province)",2021,7,2021,11,22,22,,pakistan
+2021-0456-PAK,Flood,Flash flood,"Mardan, Bajaur, Upper Dir, Haripur, Dera Ismail Khan, Karak, Peshawar Districts (Khyber Pakhtunkhwa Region)",2021,7,2021,5,7,97,,pakistan
+2021-0596-PAK,Flood,Flood (General),"Abottabad, Malakand, Swat and Torghar districts (Khyber Pakhtunkhwa Province)",2021,9,2021,19,4,4,,pakistan
+2021-0654-PAK,Earthquake,Ground movement,Hernai district i(Balochistan),2021,10,2021,21,300,64100,,pakistan
+2021-0709-PAK,Epidemic,Viral disease,"Islamabad, Rawalpindi",2021,10,2021,,2728,2728,,pakistan
+2022-0248-PAK,Extreme temperature,Heat wave,,2022,3,2022,,,,,pakistan
+2023-0156-PAK,Earthquake,Ground movement,Khyber Pakhtunkhwa,2023,3,2023,11,79,939,,pakistan
+2023-0159-PAK,Flood,Flash flood,"Awaran, Zhob and Khuzdar Districts (Balochistan Province)",2023,3,2023,10,,,,pakistan
+2023-0173-PAK,Flood,Flood (General),"Mardan, Peshawar, South Waziristan and Khybe districts ( Khyber Pakhtunkhwa Province)",2023,3,2023,14,,50,,pakistan
+2023-0266-PAK,Flood,Flash flood,"Khuzdar City/Qusdar (Khuzdar District, central Balochistan), Kech District (southern Balochistan), Lasbela District (southern Balochistan) Mach Town (Kachhi District, central Balochistan); Khyber Pakhtunkhwa Province",2023,4,2023,12,3,3,,pakistan
+2023-0306-PAK,Mass movement (wet),Avalanche (wet),Shounter,2023,5,2023,11,25,25,,pakistan
+2023-0328-PAK,Extreme temperature,Heat wave,,2023,4,2023,22,,,,pakistan
+2023-0331-PAK,Storm,Tropical cyclone,,2023,6,2023,1,,,,pakistan
+2023-0462-PAK,Flood,Flash flood,,2023,7,2023,13,,,,pakistan
+2023-0542-PAK,Flood,Flood (General),Punjab Province,2023,8,2023,16,,,,pakistan
+2023-0571-PAK,Flood,Flood (General),"Punjab, Sindh, and Balochistan",2023,9,2023,6,101,89601,,pakistan
+2024-0120-PAK,Flood,Flood (General),"Bajaur, Khyber, Makaland, Mohmand, and Lower and Upper Dir districts (Khyber Pakhtunkhwa Province); Gwadar (Balochistan province) Province",2024,2,2024,40,62,3232,,pakistan
+2024-0190-PAK,Storm,Severe weather,"Peshawar, Nowshera, Shangla, Bannu, Khyber, Charsadda and Bajaur (Khyber Pakhtunkhwa Province); Punjab; Balochistan; Sindh provinces",2024,3,2024,99,94,17594,,pakistan
+2024-0246-PAK,Extreme temperature,Heat wave,Sindh,2024,5,2024,,,,,pakistan
+2024-0263-PAK,Storm,Severe weather,Khyber Pakhtunkhwa province,2024,4,2024,7,9,309,,pakistan
+2024-0452-PAK,Extreme temperature,Heat wave,"Karachi, Sindh province",2024,6,2024,568,7905,7905,,pakistan
+2024-0481-PAK,Flood,Flood (General),"Punjab, Sindh, Balochistan and Khyber Pakhtunkhwa provinces",2024,7,2024,368,700,551768,,pakistan
+2025-0392-PAK,Storm,Severe weather,"Punjab; Peshawar, Mardan, Swabi, Swat and Abbottabad (Khyber Pakhtunkhwa -KP), and Islamabad",2025,5,2025,20,150,150,,pakistan
+2025-0408-PAK,Storm,Storm (General),"Mardan, Swabi, Peshawar, Shangla, Swat, Torghar, Mohmand, Mansehra, and Haripur dsitricts (Khyber Pakhtunkhwa province)",2025,5,2025,10,21,21,,pakistan
+2025-0416-PAK,Flood,Flash flood,"Khyber Pakhtunkhwa, Punjab, Azad Jammu and Kashmir, Sindh, and Balochistan",2025,6,2025,1037,1067,6901067,3000000,pakistan
+2025-0685-PAK,Flood,Flood (General),"Bunner, Bhattagram, Bajur, and Swat districts (Khyber Pakhtunkhwa) Gilgit-Baltistan, Sindh, Azad Jammu and Kashmir provinces",2025,8,2025,355,347,20847,,pakistan
+2019-0201-PAK,Flood,Flash flood,"Balochistan, South Waziristan",2019,4,2019,20,,,,pakistan
+2019-0346-PAK,Flood,Flash flood,"Punjab, Balochistan, Khyber Pakhtunkhwa, Sindh, Azad Jammu and Kashmir (AJK)",2019,7,2019,64,71,871,,pakistan
+2019-0386-PAK,Flood,Flood (General),"Sindh, Khyber Pakhtunkhwa provinces",2019,8,2019,26,4,4,,pakistan
+2020-0010-PAK,Storm,Blizzard/Winter storm,"Mastung, Qila Abdullah, Kech, Ziarat, Harnai, and Pishin districts (Balochistan); Rajanpur District (Punjab Province); Azad Jammu and Kashmir, Khyber Pakhtunkhwa, Gilgit-Baltistan",2020,1,2020,107,104,1000104,,pakistan
+2020-0095-PAK,Flood,Flash flood,Khyber Pakhtunkhwa Province,2020,3,2020,66,141,4836,,pakistan
+2020-0357-PAK,Flood,Flood (General),"Sindh province, Khyber Pakhtunkhwa, Baluchistan",2020,8,2020,410,170,1550170,1500000,pakistan
+2003-0250-PAK,Extreme temperature,Heat wave,Punjab province,2003,5,2003,200,,,,pakistan
+2022-0323-PAK,Wildfire,Forest fire,"Sherani district, north-west of Balochistan Province, Khyber-Pakhtunkhwa",2022,5,2022,4,4,4004,,pakistan
+2002-0330-PAK,Storm,Severe weather,Punjab province,2002,5,2002,14,12,12,,pakistan
+2003-0086-PAK,Storm,Storm (General),"Balochistan, Sindh, North-West Frontier, Punjab, Azad Jammu and Kashmir (40408) provinces",2003,2,2003,51,57,2557,,pakistan
+2004-0054-PAK,Earthquake,Ground movement,"Bisham Tehsil area (Shangla District district, North-West Frontier province), Batagram District, Mansehra District, Kohistan District districts (North-West Frontier province)",2004,2,2004,24,63,13148,,pakistan
+2005-0079-PAK,Flood,Riverine flood,"Awaran, Gwadar, Jaffarabad, Jahl Magsi, Kech, Killa Abdullah, Lasbela, Nasirabad, Pishin, Quetta districts (Balochistan province), Abbottabad, Batagram, Kohistan, Lower Dir, Upper Dir, Malakand, Mansehra, Mardan, Shangla, Swat, Chitral districts (North-West Frontier province), Muzaffarabad, Bagh, Astore districts (Jammu and Kashmir province)",2005,2,2005,520,450,7000450,30000,pakistan
+2005-0347-PAK,Extreme temperature,Heat wave,"Punjab, Sindh, Balochistan provinces",2005,6,2005,106,200,200,,pakistan
+2007-0249-PAK,Flood,Riverine flood,"Karachi Central, Karachi East, Karachi South, Karachi West, Malir districts (Sindh province)",2007,6,2007,228,186,186,,pakistan
+2007-0348-PAK,Flood,Flash flood,"Karachi Central, Karachi East, Karachi South, Karachi West districts (Sindh province)",2007,8,2007,44,20,20,327118,pakistan
+2008-0350-PAK,Flood,Riverine flood,"Peshawar district (North-West Frontier province), Balochistan province",2008,8,2008,36,12,200012,103000,pakistan
+2008-0591-PAK,Flood,Riverine flood,Rajanpur district (Punjab province),2008,8,2008,37,,90752,,pakistan
+2009-0266-PAK,Flood,Riverine flood,"Karachi Central, Karachi East, Karachi South, Karachi West districts (Sindh province)",2009,7,2009,52,70,70,,pakistan
+2010-0053-PAK,Flood,Riverine flood,"Batagram, Kohistan, Shangla, Swat districts (North-West Frontier province)",2010,2,2010,22,,,,pakistan
+2010-0282-PAK,Flood,Riverine flood,"Uchosht village (Chitral district, North-West Frontier province)",2010,6,2010,46,,,,pakistan
+2010-0341-PAK,Flood,Flash flood,"Barkhan, Bolan, Kohlu, Nasirabad, Sibi districts (Balochistan province), Mohmand Agency, Khyber Agency (Federally Administered Tribal Areas), Bannu, Batagram, Charsadda, D. I. Khan, Kohat, Kohistan, Lakki Marwat, Lower Dir, Mansehra, Nowshera, Peshawar, Shangla, Swat, Tank districts (North-West Frontier province), Khushab, Layyah, Mianwali, Muzaffargarh, Rajanpur districts (Punjab province), Bagh, Gilgit-Baltistan, Mirpur, Muzaffarabad districts (Jammu and Kashmir province), Sindh province",2010,7,2010,1985,2946,20359496,9500000,pakistan
+2012-0363-PAK,Flood,Riverine flood,"Jaffarabad, Jhal Magsi, Nasirabad districts (Balochistan province), Dera Ghazi Kan, Rajanpur districts (Punjab province), Dadu, Ghotki, Jacobabad, Larkana (Sindh province), Jammu and Kashmir provinces",2012,8,2012,480,2902,5049364,2500000,pakistan
+2013-0099-PAK,Earthquake,Ground movement,"Mashkhel area (Chagai district, Balochistan province), Washuk area (Kharan district, Balochistan province), Karachi Central District, Karachi East District, Karachi South District, Karachi West District districts (Sindh province)",2013,4,2013,41,175,15175,,pakistan
+2013-0276-PAK,Flood,Riverine flood,"Bolan District, Jaffarabad District, Jhal Magsi District, Kalat District, Kech District, Khuzdar District, Lasbela District, Loralai District, Mastung District, Nasirabad District, Quetta District, Sibi District districts (Balochistan province), Chitral District (North-West Frontier province), Bahawalpur District, Chakwal District, Dera Ghazi Khan District, Gujranwala District, Jhang District, Kasur District, Khanewal District, Layyah District, Mandi Bahauddin District, Mianwali District, Muzaffargarh District, Narowal District, Rahim Yar Khan District, Rajanpur District, Sahiwal District, Sheikhupura District, Sialkot District, Toba Tek Singh District, Vehari District districts (Punjab province), Dadu District, Ghotki District, Hyderabad District, Jacobabad District, Khairpur District, Larkana District, Mirpur Khas District, Naushahro Feroze District, Nawabshah District, Shikarpur District, Sukkur District districts (Sindh province)",2013,8,2013,234,855,1497725,1500000,pakistan
+2013-0381-PAK,Earthquake,Ground movement,"Awaran District, Chagai District, Gwadar District, Kech District, Khuzdar District, Panjgur District districts (Balochistan province)",2013,9,2013,399,599,185749,100000,pakistan
+2015-0291-PAK,Flood,Flood (General),"Punjab, Jammu and Kashmir, North-West Frontier, Balochistan, Sindh provinces",2015,7,2015,238,232,1572423,,pakistan
+2003-0387-PAK,Flood,Riverine flood,"Sindh, Balochistan, Punjab provinces",2003,7,2003,,,,,pakistan
+2010-0073-PAK,Mass movement (wet),Avalanche (wet),"Saidan Gutlo, Mula Khail Gutlo, Gujri Bek, Kachar, Seri, Gutlo Bawon, Pari Mula Khail, Bawon Soya Khail, Karon Mula Khail, Haran, Atta Abad, Kundian villages (Kohistan District district, North-West Frontier province)",2010,2,2010,31,72,3705,,pakistan
+2012-0325-PAK,Flood,Flash flood,Jammu and Kashmir provinces,2012,9,2012,12,,,,pakistan
+2012-0511-PAK,Mass movement (wet),Landslide (wet),Administrative unit not available district (Jammu and Kashmir province),2012,11,2012,18,,,,pakistan
+2013-0068-PAK,Flood,Riverine flood,"Punjab, Jammu and Kasjmir, North-West Frontier provinces",2013,2,2013,34,57,57,,pakistan
+2016-0375-PAK,Flood,Flash flood,"Balochistan, Sindh provinces",2016,8,2016,32,,2900,,pakistan
+2015-0124-PAK,Flood,Riverine flood,"Federally Administered Tribal Areas, North-West Frontier, Punjab provinces",2015,2,2015,32,,,,pakistan
+2015-0333-PAK,Flood,Riverine flood,"Rawalpindi District (Punjab province), Islamabad District (Islamabad province), Jammu and Kashmir provinces",2015,7,2015,18,,,,pakistan
+2015-0288-PAK,Flood,Flood (General),North-West Frontier province,2015,6,2015,10,,,,pakistan
+2016-0240-PAK,Flood,Flash flood,"Ursoon, Drosh village (Chitral district, Khyber Pakhtunkhwa province)",2016,7,2016,46,,410,,pakistan
+2016-0387-PAK,Flood,Flood (General),Karachi district (Sindh province),2016,8,2016,10,,,,pakistan
+2016-0554-PAK,Flood,Flood (General),"Karachi, Hyderabad, Tando Allahyar, Mirpur Khas (Sindh), Balochistan state",2016,8,2016,22,60,2960,,pakistan
+2017-0145-PAK,Storm,Lightning/Thunderstorms,"Punjab, Khyber Pakhtunkhwa provinces",2017,4,2017,11,,,,pakistan
+2018-0143-PAK,Extreme temperature,Heat wave,Karachi,2018,5,2018,180,,,,pakistan
+2023-0428-PAK,Flood,Flood (General),"Punjab, Khyber Pakhtunkhwa, Balochistan, Sindh Azad Jammu and Kashmir",2023,6,2023,217,320,29175,,pakistan
+2017-0243-PAK,Flood,Flash flood,"Tehsil Hub, Jangi village, Lasbela district, Dera Bugti district, Chagai, Kalat, Bolan, Kholu districts (Balouchistan province), Sindh (Karachi), Jhang, Rawalpindi (Punjab), Azad Jammu & Kashmir, Shareeb Khana (Bajaur) in the Federally Administered Tribal Areas, Chitral (Khyber Pakhtunkhwa)",2017,6,2017,167,167,2367,110000,pakistan
+2019-0372-PAK,Flood,Flood (General),Karachi,2019,7,2019,16,,,,pakistan
+2019-9023-PAK,Drought,Drought,"Thatta, Dadu, Sanghar, Tharparkar, Umerkot, Kambar Shadadkot, Jamshoro, Badin distrcits (Sindh province ); Pishin, Killa Abdullah, Noshki, Chaghi, Kharan, Washuk, Panjgur, Kech, Jhal Magsi, Awaran, Zhob, Jaffarabad, Barkhan, Quetta, Killah Saifullah, Kohlu, Naseerabad, Kachhi districts (Balochistan province)",2019,1,2019,77,,4680912,,pakistan
+2020-0133-PAK,Flood,Flood (General),Khyber Pakhtunkhwa,2020,3,2020,24,24,179,,pakistan
+2000-0351-PAK,Extreme temperature,Heat wave,Punjab province,2000,6,2000,24,,,,pakistan
+2021-0205-PAK,Flood,Flood (General),"Charsadda, Khyber, Bajaur, Malakand, Mardan, Upper Dir, North Waziristan, Mohmand, Bajaur, Lower-Chitral, Lower Dir, Shangla, Tank, Kurram, Swabi and Hangu districts (Khyber Pakhtunkhwa Province)",2021,3,2021,2,6,256,,pakistan
+2021-0846-PAK,Flood,Flood (General),"Khyber Pakhtunkhwa, Punjab, Balochistan, Sindh",2021,7,2021,194,,,10000,pakistan
+2022-0014-PAK,Storm,Blizzard/Winter storm,Punjab Province,2022,1,2022,22,,,,pakistan
+2023-0354-PAK,Flood,Flood (General),"Balochistan, Khyber Pakhtunkhwa, and Punjab",2023,6,2023,33,48,198,,pakistan
+2002-0834-PAK,Extreme temperature,Cold wave,"Punjab, Sindh provinces",2002,12,2002,,,,,pakistan
+2003-0359-PAK,Flood,Riverine flood,"Badin, Dadu, Hyderabad, Karachi, Larkana, Nawabshah, Shikarpur, Tharparkar, Thatta districts (Sindh province), Awaran, Bolan, Jaffarabad, Jhal Magsi, Kech, Khuzdar, Lasbela, Nasirabad, Zhob, Ziarat, Sibi districts (Balochistan province), Narowal, Sialkot districts (Punjab province), Buner, Charsadda, Nowshera, Swabi (North-West Frontier province)",2003,7,2003,230,456,1266223,,pakistan
+2005-0192-PAK,Flood,Flash flood,"Kohlu, Sibi, Nasirabad districts (Balochistan province)",2005,3,2005,20,,3500,,pakistan
+2005-0360-PAK,Flood,Riverine flood,"Monda village (Doda district, Jammu and Kashmir province), Charsadda, Chitral, D. I. Khan, Karak, Nowshera, Mansehra, Peshawar, Shangla, Swat districts (North-West Frontier province), Dadu, Ghotki, Thatta, Jacobabad, Khairpur, Shikarpur, Sukkur districts (Sindh province), Punjab province",2005,6,2005,39,,460073,,pakistan
+2005-0575-PAK,Earthquake,Ground movement,"Bisham Tehsil, Chakisar Tehsil areas (Shangla District district, North-West Frontier province), Palas Sub-Division area (Kohistan District district, North-West Frontier province), Abbottabad District, Mansehra District, Batagram District districts (North-West Frontier province), Gujranwala District, Gujrat District, Rawalpindi District districts (Punjab province), Islamabad District district (Islamabad province),",2005,10,2005,73338,128309,5128309,5200000,pakistan
+2006-0414-PAK,Flood,Riverine flood,"Karachi Central, Karachi East, Karachi South, Karachi West districts (Sindh province)",2006,8,2006,74,50,5050,,pakistan
+2006-0417-PAK,Flood,Riverine flood,Sindh province,2006,7,2006,,,,,pakistan
+2006-0548-PAK,Flood,Flash flood,"Punjab, Jammu and Kashmir provinces",2006,8,2006,20,,,,pakistan
+2006-0733-PAK,Flood,Riverine flood,Mardan district (North-West Frontier province),2006,8,2006,233,175,775,,pakistan
+2007-0412-PAK,Flood,Riverine flood,"Rah Nolia, Rano Mera villages (Kohistan district, North-West Frontier province)",2007,8,2007,22,,,,pakistan
+2009-0149-PAK,Flood,Flash flood,Mardan district (North-West Frontier province),2009,4,2009,14,10,10,,pakistan
+2010-0210-PAK,Storm,Tropical cyclone,"Sindh, Balochistan provinces",2010,6,2010,23,,4000,80000,pakistan
+2012-0475-PAK,Flood,Riverine flood,"North-West Frontier, Jammu and Kashmir provinces",2012,8,2012,26,,1200,,pakistan
+2011-0347-PAK,Flood,Riverine flood,"Badin, Dadu, Ghotki, Hyderabad, Jacobabad, Karachi Central, Karachi East, Karachi South, Karachi West, Khaipur, Larkana, Malir, Mirpur Khas, Naushahro Feroze, Nawabshah, Sanghar, Shikarpur, Sukkur, Tharparkar, Thatta, Umer Kot districts (Sindh province)",2011,8,2011,509,755,5400755,2500000,pakistan
+2019-0464-PAK,Flood,Flood (General),"Azad Jammu and Kashmir, Khyber Pakhtunkhwa",2019,8,2019,16,,,,pakistan
+2014-0343-PAK,Flood,Riverine flood,"Sialkot, Narowal, Lahore, Gujranwala, Mandi Bahauddin, Gujrat, Hafizabad, Jhelum, Jhang, Sargodha, Okara, Attock districts (Punjab province), Jammu and Kashmir provinces",2014,9,2014,255,673,2530673,2000000,pakistan
+2014-0546-PAK,Extreme temperature,Heat wave,"Mithi, Chachro, Dahli, Diplo, Islamkot, Nagarparkar regions (Tharparkar district, Sindh province)",2014,1,2014,139,,,18000,pakistan
+2015-0232-PAK,Extreme temperature,Heat wave,"Sindh, Punjab provinces",2015,6,2015,1229,,80000,,pakistan
+2019-0470-PAK,Flood,Flash flood,Neelum Valley,2019,7,2019,28,,,,pakistan
+2015-0476-PAK,Earthquake,Ground movement,"Islamabad District district (Islamabad province), Chakwal District, Gujranwala District, Jhang District, Jhelum District, Kasur District, Mianwali District, Multan District, Muzaffargarh District, Narowal District, Rawalpindi District, Sahiwal District, Sargodha District, Sheikhupura District districts (Punjab province), Azad area (Jammu and Kashmir province), North-West Frontier province",2015,10,2015,280,1745,502590,,pakistan
+2016-0112-PAK,Flood,Flash flood,"Kohistan, Shangla districts (Khyber Pakhtunkhwa province), Gilgit-Balistan (40409), Azad Kashmir (40408) provinces",2016,4,2016,92,77,77,,pakistan
+2016-0553-PAK,Flood,Riverine flood,"Azad Jammu and Kashmir, Punjab, Federally Administered Tribal Areas (Orakzai), Khyber Pakhtunkhwa, Balochistan, Gilgit-Baltistan",2016,3,2016,141,127,4412,2000,pakistan
+2017-0025-PAK,Mass movement (wet),Avalanche (wet),"Tehsil Garam Chashma, Shershal UC Karimabad village, Arandu (Chitral), Dera Ismail Khan (Khyber Pakhtunkhwa province), Bazaar Zakhakhel, Badi Samoor area of Khar (Bajaur) (Federally Administered Tribal Areas of Pakistan), between Chagai and Nushki (Balochistan)",2017,2,2017,9,3,113,,pakistan
+2023-0208-PAK,Flood,Flood (General),"Peshawar, South Waziristan, Tank, Khyber, Lower Kohistan, Mardan, Hangu, Orakza, Bajaur (Khyber Pakhtunkhwa Province)Orakzai, Peshawar, Tank and",2023,3,2023,14,27,777,,pakistan
+2009-0335-PAK,Flood,Flash flood,"Ismalia, Kalu Khan, Adina villages (Swabi district, North-West Frontier province), Shahbaz Garrhi, Garryala villages (Mardan district, North-West Frontier province)",2009,8,2009,36,,75000,,pakistan
+2007-0245-PAK,Storm,Tropical cyclone,"Balochistan, Sindh, North-West Frontier provinces",2007,6,2007,242,,1650000,1620000,pakistan
+2006-0663-PAK,Flood,Flood (General),Jammu and Kashmir provinces,2006,12,2006,20,,,,pakistan
+2006-0389-PAK,Flood,Riverine flood,"Jammu and Kashmir, Punjab, North-West Frontier provinces",2006,7,2006,40,,2000,,pakistan
+2006-0254-PAK,Extreme temperature,Heat wave,"Punjab, Sindh, Balotchistan provinces",2006,5,2006,84,100,100,,pakistan
+2005-0746-PAK,Flood,Riverine flood,"Punjab, Sindh, Jammu and Kashmir provinces",2005,7,2005,42,20,58020,,pakistan
+2005-0714-PAK,Mass movement (wet),Avalanche (wet),"Dassu town (Kohistan District district, North-West Frontier province)",2005,12,2005,24,,,,pakistan
+2004-0298-PAK,Flood,Riverine flood,"Jammu and Kashmir, Punjab provinces",2004,7,2004,5,,,,pakistan
+2003-0240-PAK,Mass movement (wet),Landslide (wet),"Ronala village (Kohistan District district, North-West Frontier province)",2003,5,2003,12,,,,pakistan
+2002-0284-PAK,Extreme temperature,Heat wave,"Balochistan, Punjab, Sindh provinces",2002,5,2002,113,24,24,,pakistan
+2001-0376-PAK,Flood,Flash flood,"Islamabad district (Islamabad province), Rawalpindi district (Punjab province), North-West Frontier province",2001,7,2001,210,179,400179,246000,pakistan
