@@ -16,15 +16,16 @@
 }
 
 .app-name {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 600;
   color: #000000;
 }
 
 .nav-link {
   color: #000000;
-  font-size: 16px;
+  font-size: 14px;
   margin-right: 0;
+  letter-spacing: 1px;
 }
 
 .nav-link:hover {
@@ -41,16 +42,37 @@
 }
 
 .btn:hover {
-  color: rgb(0, 0, 0);
+  color: rgb(236, 0, 0);
+  text-decoration: underline;
 }
 
 .btn-outline-primary:hover {
   background-color: transparent;
 }
 
+.login-btn {
+  color: #16A34A;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  font-weight: 600;
+  border: 1px solid #16A34A;
+  border-radius: 40px;
+  padding: 12px 30px;
+}
+
+.login-btn:hover {
+  color: rgb(255, 255, 255);
+  background-color: #16A34A;
+  transition: 0.3s ease-in-out;
+}
+
 .nav-link {
   font-weight: 530;
 }
+
+
 
 @media screen and (max-width: 600px) {
   .container {
@@ -67,5 +89,10 @@
 
   .navbar-brand {
     margin-right: 0px;
+  }
+
+  .login-btn {
+    font-size: 10px;
+    width: 120px;
   }
 }

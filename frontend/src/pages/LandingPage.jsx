@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../style/LandingPage.css';
+import { Link } from 'react-router-dom';
 
 function LandingPage() {
     return (
@@ -12,8 +13,8 @@ function LandingPage() {
                 <h1>Help Pro - Disaster Relief & Emergency Assistance</h1>
                 <p>A web-based platform designed to support disaster management, emergency response, and relief coordination in real time.</p>
                 <div className="button-group">
-                    <button className="btn btn-primary">Get Help Now</button>
-                    <button className="btn btn-secondary">Admin Login</button>
+                    <Link className="btn btn-primary" to='/signup'>Get Help Now</Link>
+                    <Link className="btn btn-secondary" to='/admin-signin'>Admin Login</Link>
                 </div>
             </section>
 
@@ -67,7 +68,7 @@ function LandingPage() {
                 <div className="steps-slider">
                     <div className="steps-track">
                         <div className="step">
-                            <div className="step-number" style={{ backgroundColor: '#2563eb'}}>1</div>
+                            <div className="step-number" style={{ backgroundColor: '#2563eb' }}>1</div>
                             <h3>User reports an emergency</h3>
                             <p>
                                 Users can submit real-time emergency help requests by providing their
@@ -105,7 +106,6 @@ function LandingPage() {
                             </p>
                         </div>
 
-                        {/* Duplicate steps for infinite scroll */}
                         <div className="step">
                             <div className="step-number" style={{ backgroundColor: '#2563eb' }}>1</div>
                             <h3>User reports an emergency</h3>
@@ -155,53 +155,29 @@ function LandingPage() {
 
                 <div className="tech-grid">
                     <div className="tech-card">
-                        <h3 style={{ color: '#2563eb' }}>MERN Stack</h3>
-                        <p>
-                            MongoDB, Express, React, Node.js. <br />
-                            Enables building fast and scalable full-stack web applications.
-                        </p>
+                        <img className='mern-logo' src="mern-logo.jpg" alt="mern" />
+                        <h2>MERN</h2>
                     </div>
 
                     <div className="tech-card">
-                        <h3 style={{ color: '#f97316' }}>Real-time Data</h3>
-                        <p>
-                            Instant updates and live communication. <br />
-                            Keeps users informed instantly with up-to-date information.
-                        </p>
+                        <img src="git.webp" alt='git' />
+                        <h2 style={{marginTop: "75px"}}>Git & Github</h2>
                     </div>
 
                     <div className="tech-card">
-                        <h3 style={{ color: '#f59e0b' }}>Monitoring & Alerts</h3>
-                        <p>
-                            Real-time notifications and monitoring ensure prompt response to emergencies. <br />
-                            Helps track system performance and disaster updates efficiently.
-                        </p>
+                        <img src="linux.webp" alt="linux" />
+                        <h2 style={{marginTop: "75px"}}>Linux</h2>
                     </div>
 
                     <div className="tech-card">
-                        <h3 style={{ color: '#8b5cf6' }}>System Architecture</h3>
-                        <p>
-                            The app uses REST APIs for backend communication, integrating weather and disaster data APIs. <br />
-                            Efficient routing and database interactions ensure smooth operations.
-                        </p>
+                        <img src="vscodesvg.png" alt="vscode" />
+                        <h2 style={{marginTop: "75px"}}>VS Code</h2>
                     </div>
 
                     <div className="tech-card">
-                        <h3 style={{ color: '#ec4899' }}>Tools</h3>
-                        <p>
-                            VS Code, Linux, Postman API, Git, GitHub. <br />
-                            Essential for development, testing, version control, and deployment.
-                        </p>
+                        <img src="postman.webp" alt="postman" />
+                        <h2 style={{marginTop: "75px"}}>Postman</h2>
                     </div>
-
-                    <div className="tech-card">
-                        <h3 style={{ color: '#16a34a' }}>Secure Authentication</h3>
-                        <p>
-                            Robust authentication and encryption. <br />
-                            Ensures user data is protected at all times.
-                        </p>
-                    </div>
-
                 </div>
 
             </section>
