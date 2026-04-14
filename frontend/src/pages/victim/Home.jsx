@@ -95,12 +95,8 @@ export default function VictimHome() {
       setRequests((prev) => [...prev, savedRequest]);
       setMessage(res.data.message);
       setSubmitted(true);
-
-      setStats((prev) => [
-        { ...prev[0], value: prev[0].value + 1 },
-        prev[1],
-        { ...prev[2], value: prev[2].value + 1 },
-      ]);
+      
+      await getRequests();
     } catch (e) {
       console.error("Error submitting request:", e.response?.data?.message || e.message);
       setMessage(e.response?.data?.message || "Failed to make a request.");
@@ -445,7 +441,7 @@ export default function VictimHome() {
                 </div>
                 <h4 style={{ marginBottom: "20px" }}>{message}</h4>
                 <button className="btn-primary-custom" onClick={closeModal}>
-                  View on Map
+                  Go to Map!
                 </button>
               </div>
             )}

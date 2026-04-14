@@ -1,10 +1,10 @@
 import express from "express";
 import Request from "../models/requests.js";
 import Users from "../models/user.js";
+import axios from "axios";
 import { protect } from "../middleware/authMiddleware.js";
 import { authorizeRoles } from "../middleware/roleMiddleware.js";
 import getCityFromCoords from "../services/locationService.js";
-import { getEmbedding } from "../services/embeddingService.js"; 
 import mongoose from "mongoose";
 
 const router = express.Router();
@@ -31,10 +31,7 @@ router.post("/", protect, authorizeRoles("victim"), async (req, res) => {
 
     const victimExists = await Users.findById(victimId);
     if (!victimExists) return res.status(400).json({ message: "Invalid victim ID." });
-
     
-    const embedding = await getEmbedding(deliveryType, victimCity);
-
     const newRequest = new Request({
       deliveryType,
       description,
@@ -44,13 +41,40 @@ router.post("/", protect, authorizeRoles("victim"), async (req, res) => {
       name: req.user.name,
       phone: req.user.phone,
       status: "Pending",
-      embedding 
+      query: `I live in ${victimCity} and I need ${deliveryType} urgently. ${description}`
     });
 
-    const savedRequest = await newRequest.save();
-    console.log("Saved request with embedding:", savedRequest);
+    const flask_Res = await axios.post("http://localhost:5001/process", {
+      query: newRequest.query,
+      city: newRequest.victimCity
+    });
 
-    res.status(201).json({ message: "Request submitted", savedRequest });
+    console.log("Flask response:", flask_Res.data);
+
+    const verification = flask_Res.data.llm_response?.verification;
+    
+    if (verification === "Verified") {
+
+      newRequest.status = "Pending";
+      const savedRequest = await newRequest.save();
+
+      console.log("Request accepted and saved:", savedRequest);
+      res.status(201).json({ message: "Request submitted and accepted", savedRequest });
+
+    }
+    else {
+      newRequest.status = "Rejected";
+
+      const savedRequest = await newRequest.save();
+
+      console.log("Request rejected due to fake verification:", savedRequest);
+      
+      res.status(201).json({ 
+        message: "Your request seems fake and could not be verified. Request not accepted.", 
+        verification: verification,
+        savedRequest 
+      });
+    }
 
   } catch (err) {
     console.error("Request creation error:", err);
@@ -98,7 +122,8 @@ router.get("/victim", protect, authorizeRoles("victim"), async (req, res) => {
     });
 
     const totalCount = await Request.countDocuments({
-      victim: victimId
+      victim: victimId,
+      status: { $nin: ["Cancelled", "Rejected"] }
     });
 
     console.log("Fetched requests for victim:", activeRequests);

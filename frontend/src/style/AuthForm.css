@@ -1,9 +1,10 @@
 .auth-wrapper {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;  
   align-items: center; 
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 20%, #bbf7d0 40%, #86efac 60%, #4ade80 80%, #22c55e 100%);
   padding: 20px;
   position: relative;
   overflow: hidden;
@@ -16,8 +17,30 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2316a34a' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2316a34a' fill-opacity='0.03'%3E%3Cpath d='M20 20h5v5h-5zM30 30h5v5h-5zM40 20h5v5h-5zM50 30h5v5h-5zM60 20h5v5h-5zM70 30h5v5h-5zM80 20h5v5h-5zM20 40h5v5h-5zM30 50h5v5h-5zM40 40h5v5h-5zM50 50h5v5h-5zM60 40h5v5h-5zM70 50h5v5h-5zM80 40h5v5h-5zM20 60h5v5h-5zM30 70h5v5h-5zM40 60h5v5h-5zM50 70h5v5h-5zM60 60h5v5h-5zM70 70h5v5h-5zM80 60h5v5h-5zM20 80h5v5h-5zM30 90h5v5h-5zM40 80h5v5h-5zM50 90h5v5h-5zM60 80h5v5h-5zM70 90h5v5h-5zM80 80h5v5h-5z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   pointer-events: none;
+}
+
+.auth-header {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.auth-header:hover {
+  transform: scale(1.05);
+}
+
+.auth-logo {
+  font-size: 32px;
+  font-weight: 800;
+  color: #16a34a;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(22, 163, 74, 0.1);
+  letter-spacing: -0.5px;
 }
 
 .auth-container {
@@ -282,6 +305,11 @@
 /* Admin specific styling - keep the original blue theme for admin */
 .auth-wrapper.admin {
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+}
+
+.auth-wrapper.admin .auth-logo {
+  color: #1e3a8a;
+  text-shadow: 2px 2px 4px rgba(30, 58, 138, 0.1);
 }
 
 .auth-wrapper.admin::before {
