@@ -56,8 +56,8 @@ const AdminLayout = () => {
         } catch (e) {
             console.error("Error fetching requests:", e.response?.data || e.message);
         }
-    };
-
+    }; 
+ 
     useEffect(() => {
         getUsers();
         getRequests();
