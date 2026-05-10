@@ -100,6 +100,7 @@ export default function VictimHome() {
     } catch (e) {
       console.error("Error submitting request:", e.response?.data?.message || e.message);
       setMessage(e.response?.data?.message || "Failed to make a request.");
+      setSubmitted(true); 
     } finally {
       setIsSubmitting(false);
     }
@@ -114,7 +115,6 @@ export default function VictimHome() {
 
       const activeRequests = res.data.activeRequests || [];
       setRequests(activeRequests);
-      console.log(activeRequests);
 
       setStats([
         { icon: "bi-gift", label: "Total Requests Posted", value: res.data.totalCount || 0, color: "green" },

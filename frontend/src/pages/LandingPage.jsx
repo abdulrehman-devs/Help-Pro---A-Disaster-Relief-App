@@ -221,7 +221,7 @@ function LandingPage() {
                             <div className="feedback-meta">
                                 <span className="feedback-avatar" aria-hidden="true">A</span>
                                 <div className="feedback-person">
-                                    <div className="feedback-name">Amina K.</div>
+                                    <div className="feedback-name">Aleyze K.</div>
                                     <div className="feedback-role">Victim</div>
                                 </div>
                             </div>
@@ -271,30 +271,78 @@ function LandingPage() {
                         <p>Modern tools that support a responsive and reliable disaster relief experience.</p>
                     </div>
 
-                    <ul className="tech-list" aria-label="Technology stack list">
-                        <li className="tech-item">
-                            <img className="tech-icon tech-icon--mern" src="/mern-logo.jpg" alt="MERN" />
-                            <span className="tech-name">MERN</span>
-                        </li>
-                        <li className="tech-item">
-                            <img className="tech-icon" src="/git.webp" alt="Git & GitHub" />
-                            <span className="tech-name">Git &amp; GitHub</span>
-                        </li>
-                        <li className="tech-item">
-                            <img className="tech-icon" src="/linux.webp" alt="Linux" />
-                            <span className="tech-name">Linux</span>
-                        </li>
-                        <li className="tech-item">
-                            <img className="tech-icon" src="/vscodesvg.png" alt="VS Code" />
-                            <span className="tech-name">VS Code</span>
-                        </li>
-                        <li className="tech-item">
-                            <img className="tech-icon" src="/postman.webp" alt="Postman" />
-                            <span className="tech-name">Postman</span>
-                        </li>
-                    </ul>
+                    <div className="tech-carousel" aria-roledescription="carousel">
+                        <div className="tech-carousel-slides">
+                            <div className="tech-slide">
+                                <div className="tech-item">
+                                    <img className="tech-icon tech-icon--mern" src="/mern-logo.jpg" alt="MERN" />
+                                    <span className="tech-name">MERN</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/git.webp" alt="Git & GitHub" />
+                                    <span className="tech-name">Git &amp; GitHub</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/linux.webp" alt="Linux" />
+                                    <span className="tech-name">Linux</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/vscodesvg.png" alt="VS Code" />
+                                    <span className="tech-name">VS Code</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/postman.webp" alt="Postman" />
+                                    <span className="tech-name">Postman</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/Langchain.png" alt="Langchain" />
+                                    <span className="tech-name">Langchain</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/Flask.png" alt="Flask" />
+                                    <span className="tech-name">Flask</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/OpenStreetMap.jpg" alt="OpenStreetMap" />
+                                    <span className="tech-name">OpenStreetMap</span>
+                                </div>
+                                {/* Duplicate for continuous animation */}
+                                <div className="tech-item">
+                                    <img className="tech-icon tech-icon--mern" src="/mern-logo.jpg" alt="MERN" />
+                                    <span className="tech-name">MERN</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/git.webp" alt="Git & GitHub" />
+                                    <span className="tech-name">Git &amp; GitHub</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/linux.webp" alt="Linux" />
+                                    <span className="tech-name">Linux</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/vscodesvg.png" alt="VS Code" />
+                                    <span className="tech-name">VS Code</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/postman.webp" alt="Postman" />
+                                    <span className="tech-name">Postman</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/Langchain.png" alt="Langchain" />
+                                    <span className="tech-name">Langchain</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/Flask.png" alt="Flask" />
+                                    <span className="tech-name">Flask</span>
+                                </div>
+                                <div className="tech-item">
+                                    <img className="tech-icon" src="/OpenStreetMap.jpg" alt="OpenStreetMap" />
+                                    <span className="tech-name">OpenStreetMap</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </section>
 
             <section className="section faq" id='faq' aria-labelledby="faq-title">
@@ -332,6 +380,45 @@ function LandingPage() {
                                 Use the buttons above to sign up as a victim, donor, volunteer, or admin and begin coordinating support.
                             </p>
                         </details>
+                    </div>
+                </div>
+            </section>
+
+            <section className="section founders" id="founders" aria-labelledby="founders-title">
+                <div className="container">
+                    <div className="section-header section-header--center">
+                        <h2 id="founders-title">Our Founders</h2>
+                        <p>Meet the visionary minds behind Help Pro, dedicated to making disaster relief more efficient and accessible.</p>
+                    </div>
+
+                    <div className="founders-grid">
+                        <article className="founder-card">
+                            <div className="founder-image">
+                                <img src="/abd.png" alt="Abdul Rehman" />
+                            </div>
+                            <div className="founder-info">
+                                <h3>Abdul Rehman</h3>
+                                <p className="founder-bio">
+                                    As the main head developer of Help Pro, Abdul leads the technical architecture and development 
+                                    of the entire platform. With deep expertise in full-stack development and system design, he ensures 
+                                    the application meets the critical demands of disaster relief coordination.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article className="founder-card">
+                            <div className="founder-image">
+                                <img src="/zain.png" alt="Zain Awan" />
+                            </div>
+                            <div className="founder-info">
+                                <h3>Zain Awan</h3>
+                                <p className="founder-bio">
+                                    Specializing in quality assurance and testing, Zain ensures Help Pro maintains the highest 
+                                    standards of reliability and performance. His meticulous approach to testing and bug detection 
+                                    guarantees the platform works flawlessly during critical emergency response situations.
+                                </p>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </section>

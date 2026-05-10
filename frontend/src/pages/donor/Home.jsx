@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -55,7 +55,7 @@ export default function VictimHome() {
     }
   }
 
-  const handleSubmit = async (id) => {
+  const handleSubmit = useCallback (async (id) => {
     try {
       const token = localStorage.getItem("token");
 
@@ -71,12 +71,12 @@ export default function VictimHome() {
     catch (error) {
       console.error("Error accepting request:", error.response?.data || error.message);
     }
-  };
+  }, [getRequests, getStats]);
 
   useEffect(() => {
     getRequests();
     getStats();
-  }, []);
+  }, [getRequests, getStats]);
 
   useEffect(() => {
     if (!mapRef.current || !L) return;

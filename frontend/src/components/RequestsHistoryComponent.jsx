@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import '../style/Dashboard.css';
 import axios from 'axios';
 import Sidebar from '../components/sidebar';
@@ -13,7 +13,7 @@ export default function VictimRequestsHistory() {
   const { userData } = useOutletContext();
   const currentRole = localStorage.getItem("role");
 
-  const fetchRequestsHistory = async () => {
+  const fetchRequestsHistory = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
 
@@ -29,12 +29,12 @@ export default function VictimRequestsHistory() {
     } catch (e) {
       console.log("Error:", e.response?.data?.message || e.message);
     }
-  };
+  }, []);
 
   useEffect(() => {
     setRole(currentRole);
     fetchRequestsHistory();
-  }, [currentRole]);
+  }, [currentRole, fetchRequestsHistory]);
 
   const handleDelete = async (id) => {
     try {
