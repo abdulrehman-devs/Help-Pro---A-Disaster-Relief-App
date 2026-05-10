@@ -46,7 +46,7 @@ Return ONLY valid JSON:
 """
 
     payload = {
-        "model": "phi",
+        "model": "phi3:mini",
         "prompt": prompt,
         "stream": False,
         "format": "json",

@@ -34,7 +34,7 @@ export default function VictimRequestsHistory() {
   useEffect(() => {
     setRole(currentRole);
     fetchRequestsHistory();
-  }, [currentRole, fetchRequestsHistory]);
+  }, [currentRole]);
 
   const handleDelete = async (id) => {
     try {

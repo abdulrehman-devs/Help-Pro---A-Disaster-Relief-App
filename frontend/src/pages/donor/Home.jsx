@@ -179,7 +179,7 @@ export default function VictimHome() {
     if (bounds.length > 0) {
       leafletMap.current.fitBounds(bounds, { padding: [40, 40] });
     }
-  }, [requests, acceptedRequests]);
+  }, [requests, acceptedRequests, handleSubmit]);
 
   return (
     <div>

@@ -44,6 +44,8 @@ router.post("/", protect, authorizeRoles("victim"), async (req, res) => {
       query: `I live in ${victimCity} and I need ${deliveryType} urgently. ${description}`
     });
 
+    console.log(victimCity)
+
     const flask_Res = await axios.post("http://localhost:5001/process", {
       query: newRequest.query,
       city: newRequest.victimCity
@@ -53,13 +55,13 @@ router.post("/", protect, authorizeRoles("victim"), async (req, res) => {
 
     const verification = flask_Res.data.llm_response?.verification;
     
-    if (verification === "Verified") {
+    if (verification === "Verified" || verification === "Valid") {
 
       newRequest.status = "Pending";
       const savedRequest = await newRequest.save();
 
-      console.log("Request accepted and saved:", savedRequest);
-      res.status(201).json({ message: "Request submitted and accepted", savedRequest });
+      console.log("Request verified and submitted:", savedRequest);
+      res.status(201).json({ message: "Request Verified and Submitted.", savedRequest });
 
     }
     else {
