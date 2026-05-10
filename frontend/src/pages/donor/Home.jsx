@@ -36,7 +36,7 @@ export default function VictimHome() {
     }
   };
 
-  const getStats = async () => {
+  const getStats = useCallback(async () => {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.get("http://localhost:5000/api/requests/donor", {
@@ -53,7 +53,7 @@ export default function VictimHome() {
     } catch (e) {
       console.error("Error fetching requests:", e.response?.data || e.message);
     }
-  }
+  }, []);
 
   const handleSubmit = useCallback (async (id) => {
     try {
