@@ -29,13 +29,13 @@ export default function VictimRequestsHistory() {
     } catch (e) {
       console.log("Error:", e.response?.data?.message || e.message);
     }
-  }, []);
+  }, [currentRole]);
 
   useEffect(() => {
     setRole(currentRole);
     fetchRequestsHistory();
-  }, [currentRole, fetchRequestsHistory]);
-
+  }, [currentRole]);
+ 
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
