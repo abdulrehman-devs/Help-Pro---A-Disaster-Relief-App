@@ -35,7 +35,7 @@ export default function VictimRequestsHistory() {
     setRole(currentRole);
     fetchRequestsHistory();
   }, [currentRole]);
-
+ 
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
