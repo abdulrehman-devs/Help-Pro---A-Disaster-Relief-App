@@ -11,7 +11,6 @@ const Signin = () => {
     const handleSubmit = async (formData) => {
         try {
             const res = await signin(formData);
-            console.log(res.data);
             setResponse(res.data.message);
             
             localStorage.setItem("token", res.data.token)

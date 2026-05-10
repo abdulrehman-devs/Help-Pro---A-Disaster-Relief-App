@@ -8,7 +8,6 @@ const Signup = () => {
     const handleSubmit = async (formData) => {
         try {
             const res = await signup(formData);
-            console.log(res);
             setResponse(res.data.message);
             return true;
         }

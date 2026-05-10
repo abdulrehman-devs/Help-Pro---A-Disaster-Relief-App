@@ -37,6 +37,9 @@ function Header({ isLoggedIn }) {
                                     <a className="nav-link" href="#tech">TECHNOLOGY</a>
                                 </li>
                                 <li className="nav-item">
+                                    <a className="nav-link" href="#founders">OUR FOUNDERS</a>
+                                </li>
+                                <li className="nav-item">
                                     <a className="nav-link" href="#faq">FAQs</a>
                                 </li>
                             </ul>
