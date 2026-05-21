@@ -76,7 +76,7 @@ export default function VictimHome() {
   useEffect(() => {
     getRequests();
     getStats();
-  }, [getRequests, getStats]);
+  }, []);
 
   useEffect(() => {
     if (!mapRef.current || !L) return;

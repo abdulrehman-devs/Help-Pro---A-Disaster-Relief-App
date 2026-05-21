@@ -170,9 +170,10 @@ export default function VictimFeedback() {
               <i className="bi bi-clock-history me-2" style={{ color: "#e17055" }}></i>
               Recent Submissions
             </h5>
+            
 
-            {recentFeedbacks.map((item) => (
-              <div className="activity-item" key={item._id}>
+            {recentFeedbacks.map((item, index) => (
+              <div className="activity-item" key={index}>
                 <div className="activity-dot green"></div>
                 <div className="activity-text">
                   {item.subject}

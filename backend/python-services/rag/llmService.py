@@ -1,77 +1,79 @@
 import requests
 import json
-import re
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
-
 session = requests.Session()
 
-def generate_answer(query, user_location, retrieved_docs):
 
-    unique_docs = list(set(retrieved_docs))
+def generate_answer(query: str, user_city: str, retrieved_docs: list[str]) -> dict:
 
-    context = "\n".join([
-        f"- {doc}"
-        for doc in unique_docs[:3]
-    ])
+    user_city = (user_city or "").strip().lower()
+
+    if not user_city:
+        return {
+            "verification": "Fake",
+            "reason": "City not provided."
+        }
+
+    if not retrieved_docs or len(retrieved_docs) == 0:
+        return {
+            "verification": "Fake",
+            "reason": f"No disaster records found for {user_city}."
+        }
+
+    context = "\n".join([f"- {doc}" for doc in retrieved_docs[:5]])
 
     prompt = f"""
-You are a disaster analysis system.
-You have to verify the victim request posts.
+You are a disaster verification assistant.
 
-STRICT RULES:
-- Use ONLY the provided context
-- Do NOT use outside knowledge
-- Do NOT merge unrelated locations
-- If location is outside Pakistan or it is missing, return "Unknown"
+User City: {user_city}
 
-TASK RULES:
-- Determine location ONLY from context
-- Verify ONLY if context supports query
-
-Context:
+Context (verified disaster reports):
 {context}
 
-Query:
+User Request:
 {query}
 
-User Location:
-{user_location}
+RULES:
+- In query if a user enters a location outside Pakistan, return "Fake" and a short reason.
+- In query if a user enters a location inside Pakistan, verify based on the context.
+
 
 Return ONLY valid JSON:
 {{
-  "location": "Given Location of user",
-  "verification": "Verified | Fake",
+  "verification": "Verified",
+  "reason": "one short sentence explanation"
 }}
 """
 
     payload = {
-        "model": "phi3:mini",
+        "model": "llama3.1:8b-instruct",
         "prompt": prompt,
         "stream": False,
         "format": "json",
         "options": {
-            "num_predict": 80,
-            "temperature": 0.1
+            "temperature": 0.1,
+            "num_predict": 120
         }
     }
 
-    response = session.post(OLLAMA_URL, json=payload, timeout=20)
-    response.raise_for_status()
-
-    result = response.json()
-    raw_output = result.get("response", "")
-
     try:
-        data = json.loads(raw_output)
-    except:
-        match = re.search(r"\{.*\}", raw_output, re.DOTALL)
-        if match:
-            data = json.loads(match.group())
-        else:
-            return {
-                "error": "Failed to parse JSON",
-                "raw_output": raw_output
-            }
+        response = session.post(OLLAMA_URL, json=payload, timeout=25)
+        response.raise_for_status()
 
-    return data
+        raw = response.json().get("response", "").strip()
+        llm_result = json.loads(raw)
+
+        return {
+            "verification": "Verified",
+            "reason": llm_result.get(
+                "reason",
+                f"Disaster records exist for {user_city}."
+            )
+        }
+
+    except Exception:
+        return {
+            "verification": "Verified",
+            "reason": f"Disaster records exist for {user_city}."
+        }

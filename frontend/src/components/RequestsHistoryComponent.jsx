@@ -87,7 +87,7 @@ export default function VictimRequestsHistory() {
               <th className="hide-mobile">Date</th>
               <th className="hide-mobile">Priority</th>
               <th>Status</th>
-              <th>{role}</th>
+              <th>{role === "victim" ? "Donor" : "Victim"}</th>
               <th>Delete</th>
             </tr>
           </thead>
